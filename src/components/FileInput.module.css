@@ -1,0 +1,68 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  height: var(--gs-control-height);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.container:hover:not(.disabled) {
+  background: var(--gs-hover-bg);
+}
+
+.container:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+.fill {
+  width: 100%;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.text {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0 var(--gs-space-3);
+  font-size: var(--gs-font-size-body);
+  color: var(--gs-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textSelected {
+  color: var(--gs-text);
+}
+
+.button {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 var(--gs-space-3);
+  display: flex;
+  align-items: center;
+  background: var(--gs-border);
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  color: var(--gs-text);
+}
+
+.container:hover:not(.disabled) .button {
+  background: var(--gs-muted);
+  color: var(--gs-text-on-colored);
+}

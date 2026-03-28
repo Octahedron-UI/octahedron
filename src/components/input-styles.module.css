@@ -1,0 +1,150 @@
+/*
+ * Shared input styles for native elements (textarea, date inputs, etc.)
+ *
+ * Use these classes when you need styled native inputs without the full
+ * component wrapper (Input, TextArea, etc.)
+ *
+ * Import in CSS modules:
+ *   @import '../../components/ui/input-styles.module.css';
+ *   .myTextarea { composes: textarea from '../../components/ui/input-styles.module.css'; }
+ *
+ * Or import directly in components:
+ *   import inputStyles from '@/components/ui/input-styles.module.css';
+ *   <textarea className={inputStyles.textarea} />
+ */
+
+/* ============================================
+   Textarea base — shared across all variants
+   ============================================ */
+
+.textareaBase {
+  width: 100%;
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  color: var(--gs-text);
+  font-size: var(--gs-font-size-body);
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.textareaBase:hover:not(:focus):not(:disabled) {
+  border-color: var(--gs-border-hover);
+}
+
+.textareaBase:focus {
+  outline: none;
+  border-color: var(--gs-info);
+}
+
+.textareaBase:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.textareaBase::placeholder {
+  color: var(--gs-muted);
+}
+
+/* ============================================
+   Textarea — standard multi-line (default)
+   ============================================ */
+
+.textarea {
+  composes: textareaBase;
+  padding: var(--gs-space-2);
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Taller variant for larger text areas */
+.textareaLarge {
+  composes: textareaBase;
+  padding: var(--gs-space-2);
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Compact variant — starts at control height, auto-grows with content.
+   Padding matches ControlButton: control-padding vertical, double horizontal. */
+.textareaCompact {
+  composes: textareaBase;
+  padding: var(--gs-control-padding) calc(var(--gs-control-padding) * 2);
+  field-sizing: content;
+  resize: none;
+}
+
+/* ============================================
+   Date input - native <input type="date"> styling
+   ============================================ */
+
+.dateInput {
+  padding: var(--gs-space-2);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  color: var(--gs-text);
+  font-size: var(--gs-font-size-body);
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.dateInput:hover:not(:focus):not(:disabled) {
+  border-color: var(--gs-border-hover);
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: var(--gs-info);
+}
+
+.dateInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Form input wrapper - for compound inputs
+   ============================================ */
+
+.formInputWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--gs-control-height);
+  padding: 0 var(--gs-space-2);
+  font-size: var(--gs-font-size-body);
+  color: var(--gs-text);
+  background: var(--gs-bg);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  box-sizing: border-box;
+  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.formInputWrapper:hover:not(:focus-within) {
+  border-color: var(--gs-border-hover);
+}
+
+.formInputWrapper:focus-within {
+  border-color: var(--gs-info);
+  outline: none;
+}
+
+.formInputWrapper input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.formInputWrapper input:disabled {
+  color: var(--gs-muted);
+  cursor: not-allowed;
+}

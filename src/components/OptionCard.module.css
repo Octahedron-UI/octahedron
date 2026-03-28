@@ -1,0 +1,65 @@
+.card {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gs-space-1);
+  padding: var(--gs-space-2);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  cursor: pointer;
+  user-select: none;
+  text-align: left;
+  font: inherit;
+  line-height: var(--gs-control-height-compact);
+  width: 100%;
+}
+
+.card:hover {
+  background: var(--gs-hover-bg);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Primary (success) variant */
+.primary {
+  border-color: color-mix(in srgb, var(--gs-success) 50%, transparent);
+  background: color-mix(in srgb, var(--gs-success) 6%, transparent);
+}
+
+.primary:hover {
+  border-color: var(--gs-success);
+  background: color-mix(in srgb, var(--gs-success) 12%, transparent);
+}
+
+.primary .label {
+  color: var(--gs-success);
+}
+
+/* Danger variant */
+.danger {
+  border-color: color-mix(in srgb, var(--gs-danger) 50%, transparent);
+  background: color-mix(in srgb, var(--gs-danger) 6%, transparent);
+}
+
+.danger:hover {
+  border-color: var(--gs-danger);
+  background: color-mix(in srgb, var(--gs-danger) 12%, transparent);
+}
+
+.danger .label {
+  color: var(--gs-danger);
+}
+
+.label {
+  color: var(--gs-text);
+  font-weight: var(--gs-font-weight-medium);
+}
+
+.description {
+  color: var(--gs-muted);
+}

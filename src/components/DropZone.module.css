@@ -1,0 +1,72 @@
+.dropZone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gs-space-2);
+  padding: var(--gs-space-3) var(--gs-space-4);
+  border: 1px dashed var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  cursor: pointer;
+  transition:
+    background var(--gs-duration-fast) var(--gs-ease-default),
+    border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.dropZone:hover {
+  background: var(--gs-hover-bg);
+  border-color: var(--gs-border-hover);
+}
+
+.dropZone.active {
+  border-color: var(--gs-info);
+  background: var(--gs-info-bg);
+}
+
+.dropZone:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+.dropZone.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dropZone.disabled:hover {
+  border-color: var(--gs-border);
+  background: var(--gs-bg);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--gs-muted);
+}
+
+.dropZone.active .icon {
+  color: var(--gs-info);
+}
+
+.text {
+  margin: 0;
+  color: var(--gs-muted);
+  font-size: var(--gs-font-size-body);
+}
+
+.dropZone:hover .text {
+  color: var(--gs-text);
+}
+
+.dropZone.active .text {
+  color: var(--gs-info);
+}
+
+.hint {
+  margin: 0;
+  color: var(--gs-muted);
+  font-size: var(--gs-font-size-body);
+}

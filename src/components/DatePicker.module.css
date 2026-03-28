@@ -1,0 +1,281 @@
+/* ============================================
+   Container - wrapper for input + buttons
+   ============================================ */
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  height: var(--gs-control-height);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  border: 1px solid var(--gs-border);
+  box-sizing: border-box;
+  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.container:hover:not(.disabled) {
+  border-color: var(--gs-border-hover);
+}
+
+.container:focus-within,
+.container.open {
+  border-color: var(--gs-info);
+}
+
+.container.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.container.fill {
+  width: 100%;
+}
+
+.container.fill .input {
+  flex: 1;
+}
+
+/* ============================================
+   Input field
+   ============================================ */
+
+.input {
+  field-sizing: content;
+  flex: 0 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0 var(--gs-space-2);
+  border: none;
+  background: transparent;
+  font-size: var(--gs-font-size-body);
+  font-family: inherit;
+  color: var(--gs-text);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--gs-muted);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* Incomplete state - user is typing but date isn't complete */
+.input.incomplete {
+  color: var(--gs-muted);
+}
+
+/* ============================================
+   Action buttons (clear + calendar)
+   ============================================ */
+
+.clearButton,
+.calendarButton {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: var(--gs-control-radius);
+  background: transparent;
+  color: var(--gs-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.clearButton:hover,
+.calendarButton:hover {
+  color: var(--gs-text);
+}
+
+.clearButton:disabled,
+.calendarButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendarButton {
+  margin-right: var(--gs-space-1);
+}
+
+/* ============================================
+   Calendar dropdown
+   ============================================ */
+
+.calendar {
+  --_cell-size: 32px;
+
+  z-index: var(--gs-z-dropdown);
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  padding: var(--gs-space-3);
+}
+
+/* ============================================
+   Header with year + month navigation
+   ============================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gs-space-3);
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-space-1);
+}
+
+.monthLabel {
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  color: var(--gs-text);
+  text-align: center;
+}
+
+.navButton {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gs-space-6);
+  height: var(--gs-space-6);
+  padding: 0;
+  border: none;
+  border-radius: var(--gs-control-radius);
+  background: transparent;
+  color: var(--gs-muted);
+  cursor: pointer;
+  transition:
+    background var(--gs-duration-fast) var(--gs-ease-default),
+    color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.navButton:hover {
+  background: var(--gs-hover-bg);
+  color: var(--gs-text);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: -2px;
+}
+
+/* Double chevron for year nav - overlap them */
+.doubleChevron {
+  margin-left: -10px;
+}
+
+/* ============================================
+   Weekday headers
+   ============================================ */
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, var(--_cell-size));
+  margin-bottom: var(--gs-space-1);
+}
+
+.weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--gs-space-6);
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  color: var(--gs-muted);
+}
+
+/* ============================================
+   Calendar grid
+   ============================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, var(--_cell-size));
+  outline: none;
+}
+
+.grid:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+.emptyCell {
+  width: var(--_cell-size);
+  height: var(--_cell-size);
+}
+
+.dayButton {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_cell-size);
+  height: var(--_cell-size);
+  padding: 0;
+  border: none;
+  border-radius: var(--gs-control-radius);
+  background: transparent;
+  font-size: var(--gs-font-size-body);
+  font-family: inherit;
+  color: var(--gs-text);
+  cursor: pointer;
+  transition:
+    background var(--gs-duration-fast) var(--gs-ease-default),
+    color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.dayButton:hover:not(:disabled) {
+  background: var(--gs-hover-bg);
+}
+
+.dayButton:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: -2px;
+}
+
+/* Today indicator - subtle ring */
+.dayButton.today {
+  font-weight: var(--gs-font-weight-semibold);
+  box-shadow: inset 0 0 0 1px var(--gs-info);
+}
+
+/* Focused via keyboard navigation (within grid) */
+.dayButton.focused {
+  background: var(--gs-hover-bg);
+}
+
+/* Selected state */
+.dayButton.selected {
+  background: var(--gs-info);
+  color: white;
+  font-weight: var(--gs-font-weight-medium);
+}
+
+.dayButton.selected:hover:not(:disabled) {
+  background: var(--gs-info);
+}
+
+.dayButton.selected.today {
+  box-shadow: none;
+}
+
+/* Disabled state */
+.dayButton.dayDisabled {
+  color: var(--gs-muted);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dayButton.dayDisabled:hover {
+  background: transparent;
+}

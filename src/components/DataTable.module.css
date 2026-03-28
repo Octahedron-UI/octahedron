@@ -1,0 +1,253 @@
+/*
+ * DataTable styles - plain HTML table without Blueprint
+ */
+
+/* Base table styles */
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: var(--gs-font-size-body);
+}
+
+.table th,
+.table td {
+  height: var(--gs-table-row-height);
+  padding: var(--gs-space-2) var(--gs-space-3);
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Cell content wrapper enforces fixed row height */
+.cellContent {
+  display: flex;
+  align-items: center;
+  height: calc(var(--gs-table-row-height) - var(--gs-space-2) * 2);
+  overflow: hidden;
+}
+
+.cellContent > * {
+  min-width: 0; /* Allow flex children to shrink */
+}
+
+/* Text truncation for simple text content */
+.cellText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* First/last column edge padding */
+.table th:first-child,
+.table td:first-child {
+  padding-left: var(--gs-space-4);
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: var(--gs-space-4);
+}
+
+/* Header styles */
+.table thead th {
+  background-color: var(--gs-surface);
+  color: var(--gs-muted);
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+}
+
+/* Row hover */
+.table tbody tr:hover {
+  background-color: var(--gs-hover-bg);
+}
+
+/* Selected row */
+.table tbody tr.selected,
+.table tbody tr.selected:hover {
+  background-color: var(--gs-link-bg);
+}
+
+/* Bordered mode */
+.bordered th,
+.bordered td {
+  box-shadow: inset 0 -1px 0 var(--gs-border);
+}
+
+.bordered th:not(:first-child),
+.bordered td:not(:first-child) {
+  box-shadow:
+    inset 0 -1px 0 var(--gs-border),
+    inset 1px 0 0 var(--gs-border);
+}
+
+/* Striped mode */
+.striped tbody tr:nth-child(even) {
+  background-color: var(--gs-surface);
+}
+
+.striped tbody tr:nth-child(even):hover {
+  background-color: var(--gs-hover-bg);
+}
+
+/*
+ * Sticky header
+ */
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* When bordered, header needs opaque background to cover scrolling content */
+.bordered thead th {
+  background-color: var(--gs-surface);
+}
+
+/* Cells with noPadding - zero vertical padding so content fills row height,
+   but keep horizontal padding for inter-column spacing */
+.table th.noPadding,
+.table td.noPadding {
+  padding: 0 var(--gs-space-3);
+  vertical-align: middle;
+}
+
+/* Edge padding still applies on noPadding columns — DataTable owns screen spacing */
+.table th.noPadding:first-child,
+.table td.noPadding:first-child {
+  padding-left: var(--gs-space-4);
+}
+
+.table th.noPadding:last-child,
+.table td.noPadding:last-child {
+  padding-right: var(--gs-space-4);
+}
+
+.table th.noPadding .cellContent,
+.table td.noPadding .cellContent {
+  height: var(--gs-table-row-height);
+  justify-content: center;
+}
+
+/*
+ * Expandable rows
+ */
+
+/* Expand toggle button */
+.expandToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--gs-muted);
+  cursor: pointer;
+  border-radius: var(--gs-radius-sm);
+  flex-shrink: 0;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.expandToggle:hover {
+  color: var(--gs-text);
+  background: var(--gs-hover-bg);
+}
+
+.expandToggle:focus-visible {
+  outline: 2px solid var(--gs-link);
+  outline-offset: -2px;
+}
+
+/* Child row styling */
+.childRow {
+  background-color: var(--gs-surface);
+}
+
+.childRow:hover {
+  background-color: var(--gs-hover-bg);
+}
+
+/* In striped mode, child rows should be slightly different */
+.striped tbody tr.childRow:nth-child(odd),
+.striped tbody tr.childRow:nth-child(even) {
+  background-color: var(--gs-surface);
+}
+
+.striped tbody tr.childRow:hover {
+  background-color: var(--gs-hover-bg);
+}
+
+/*
+ * Variable row height mode
+ * Allows rows to expand to fit multi-line content
+ */
+.variableRowHeight th,
+.variableRowHeight td {
+  height: auto;
+  min-height: var(--gs-table-row-height);
+  padding-top: var(--gs-space-2);
+  padding-bottom: var(--gs-space-2);
+}
+
+.variableRowHeight .cellContent {
+  height: auto;
+  min-height: calc(var(--gs-table-row-height) - var(--gs-space-2) * 2);
+  overflow: visible;
+}
+
+/*
+ * Print
+ *
+ * Convert interactive table styling to print-friendly output:
+ * - Real CSS borders instead of box-shadow (shadows don't print)
+ * - No sticky headers, no hover, no truncation
+ * - Rows expand to fit content
+ */
+@media print {
+  .table thead th {
+    position: static;
+  }
+
+  .table tbody tr:hover {
+    background-color: transparent;
+  }
+
+  .cellContent {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .cellText {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .bordered th,
+  .bordered td {
+    box-shadow: none;
+    border-bottom: 1px solid var(--gs-border);
+  }
+
+  .bordered th:not(:first-child),
+  .bordered td:not(:first-child) {
+    box-shadow: none;
+    border-bottom: 1px solid var(--gs-border);
+    border-left: 1px solid var(--gs-border);
+  }
+
+  /* Top border on first row for full grid */
+  .bordered thead th {
+    border-top: 1px solid var(--gs-border);
+  }
+
+  .table thead th {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

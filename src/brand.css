@@ -1,0 +1,27 @@
+/*
+ * Octahedron brand tokens.
+ *
+ * These define the brand identity (accent color, font stacks). They are NOT
+ * a complete design system — each app layers its own application-specific
+ * tokens on top of these. Override these custom properties to theme your app.
+ */
+
+:root {
+  /* Brand accent (teal) */
+  --octa-brand: #22d3a7;
+  --octa-brand-hover: #2eeabd;
+  --octa-brand-dim: rgba(34, 211, 167, 0.08);
+  --octa-brand-glow: rgba(34, 211, 167, 0.2);
+
+  /* Font stacks */
+  --octa-font-mono:
+    'Source Code Pro', 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --octa-font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Dark backgrounds (shared across dark themes) */
+  --octa-bg-deep: #060810;
+  --octa-bg: #0a0d14;
+  --octa-bg-elevated: #111520;
+  --octa-bg-surface: #191e2c;
+}

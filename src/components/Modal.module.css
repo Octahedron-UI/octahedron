@@ -1,0 +1,126 @@
+.dialog {
+  /* Fill viewport to capture backdrop clicks */
+  /* Use 100% instead of 100vw to avoid scrollbar width issue */
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--gs-space-5);
+  border: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.dialog[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog::backdrop {
+  background: var(--gs-overlay);
+  animation: backdrop-enter var(--gs-duration-moderate) var(--gs-ease-default);
+}
+
+@keyframes backdrop-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+.container {
+  contain: layout style;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 48px);
+  max-width: calc(100vw - 48px);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  animation: modal-enter var(--gs-duration-moderate) var(--gs-ease-out);
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    animation: modal-enter-reduced var(--gs-duration-fast) var(--gs-ease-default);
+  }
+
+  @keyframes modal-enter-reduced {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .dialog::backdrop {
+    animation: none;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gs-space-3);
+  padding: var(--gs-space-3) var(--gs-space-4);
+  border-bottom: 1px solid var(--gs-border);
+  flex-shrink: 0;
+}
+
+.title {
+  min-width: 0;
+}
+
+.closeButton {
+  flex-shrink: 0;
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gs-space-3);
+  padding: var(--gs-space-3) var(--gs-space-4);
+  background: color-mix(in srgb, var(--gs-danger) 8%, var(--gs-bg));
+  border-bottom: 1px solid var(--gs-border);
+  color: var(--gs-text);
+  font-size: var(--gs-font-size-body);
+  flex-shrink: 0;
+}
+
+.errorIcon {
+  color: var(--gs-danger);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.errorContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.body {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.footer {
+  padding: var(--gs-space-3) var(--gs-space-4);
+  border-top: 1px solid var(--gs-border);
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--gs-space-2);
+}

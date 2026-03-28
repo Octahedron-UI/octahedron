@@ -1,0 +1,12 @@
+.trigger {
+  display: inline-flex;
+  width: inherit;
+}
+
+.popover {
+  z-index: var(--gs-z-dropdown);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  overflow: hidden;
+  background: var(--gs-bg);
+}

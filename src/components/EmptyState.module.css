@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gs-space-6);
+  text-align: center;
+  gap: var(--gs-space-3);
+}
+
+.icon {
+  color: var(--gs-muted);
+  opacity: 0.6;
+}
+
+.title {
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  color: var(--gs-text);
+}
+
+.description {
+  font-size: var(--gs-font-size-body);
+  font-style: italic;
+  color: var(--gs-muted);
+  max-width: 400px;
+}
+
+.action {
+  margin-top: var(--gs-space-2);
+}

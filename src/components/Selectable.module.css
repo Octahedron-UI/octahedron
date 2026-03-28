@@ -1,0 +1,63 @@
+/* ============================================================
+ * Selectable — Toggleable control matching ControlButton base
+ *
+ * Unselected = default ControlButton appearance
+ * Selected   = soft-primary treatment (tinted bg, colored text)
+ * ============================================================ */
+
+.selectable {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  height: var(--gs-control-height);
+  line-height: var(--gs-control-height);
+  padding: var(--gs-control-padding) calc(var(--gs-control-padding) * 2);
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  border: 1px solid var(--gs-border);
+  box-sizing: border-box;
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-regular);
+  color: var(--gs-muted);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background var(--gs-duration-fast) var(--gs-ease-default),
+    color var(--gs-duration-fast) var(--gs-ease-default),
+    border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.selectable:hover:not(:disabled) {
+  background: var(--gs-hover-bg);
+  color: var(--gs-text);
+}
+
+/* Selected: soft-primary treatment */
+.selectable[data-selected] {
+  background: color-mix(in srgb, var(--gs-info) 7%, transparent);
+  border-color: color-mix(in srgb, var(--gs-info) 25%, transparent);
+  color: var(--gs-info);
+}
+
+.selectable[data-selected]:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--gs-info) 14%, transparent);
+  border-color: color-mix(in srgb, var(--gs-info) 40%, transparent);
+  color: var(--gs-info);
+}
+
+/* Focus */
+.selectable:focus {
+  outline: none;
+}
+
+.selectable:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.selectable:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}

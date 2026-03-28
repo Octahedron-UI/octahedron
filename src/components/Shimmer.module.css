@@ -1,0 +1,23 @@
+.shimmer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gs-space-1);
+  animation: pulse var(--gs-duration-shimmer) ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+    opacity: 0.6;
+  }
+}

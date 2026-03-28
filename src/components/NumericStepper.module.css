@@ -1,0 +1,61 @@
+/* Compact numeric stepper with +/- buttons */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-radius-sm);
+  background: var(--gs-bg);
+  overflow: hidden;
+}
+
+.stepper.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  color: var(--gs-muted);
+  cursor: pointer;
+  transition:
+    background var(--gs-duration-fast) var(--gs-ease-default),
+    color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.button:hover:not(:disabled) {
+  background: var(--gs-hover-bg);
+  color: var(--gs-text);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: -2px;
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.value {
+  min-width: 32px;
+  text-align: center;
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--gs-text);
+  border-left: 1px solid var(--gs-border);
+  border-right: 1px solid var(--gs-border);
+  padding: 0 var(--gs-space-1);
+  height: 28px;
+  line-height: 28px;
+}

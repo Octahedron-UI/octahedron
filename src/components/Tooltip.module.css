@@ -1,0 +1,54 @@
+/**
+ * Tooltip Styles
+ *
+ * Matches CodeMirror hover tooltip styling for consistency.
+ */
+
+.tooltip {
+  z-index: var(--gs-z-dropdown);
+  max-width: 300px;
+  padding: var(--gs-space-2);
+  background: var(--gs-bg);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  font-size: var(--gs-font-size-body);
+  line-height: 1.4;
+  color: var(--gs-text);
+}
+
+/* Structured tooltip content - matches CodeMirror hover tooltips */
+.title {
+  font-family: var(--gs-font-mono);
+  font-weight: var(--gs-font-weight-semibold);
+  color: var(--gs-text);
+}
+
+.subtitle {
+  font-family: var(--gs-font-mono);
+  font-size: var(--gs-font-size-body);
+  color: var(--gs-muted);
+  margin-top: var(--gs-space-1);
+}
+
+.description {
+  color: var(--gs-text);
+  margin-top: var(--gs-space-1);
+}
+
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gs-space-1);
+  margin-top: var(--gs-space-2);
+  padding-top: var(--gs-space-2);
+  border-top: 1px solid var(--gs-border);
+}
+
+.values code {
+  font-family: var(--gs-font-mono);
+  font-size: var(--gs-font-size-body);
+  padding: 1px var(--gs-space-1);
+  background: var(--gs-hover-bg);
+  border-radius: var(--gs-radius-sm);
+  color: var(--cm-string);
+}

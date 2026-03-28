@@ -1,0 +1,55 @@
+/* DrillDownItem - Purpose-built component for items that open detail panels */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-space-3);
+  padding: var(--gs-space-2);
+  background: var(--gs-bg);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-control-radius);
+  cursor: pointer;
+  transition:
+    background var(--gs-duration-fast) var(--gs-ease-default),
+    border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.item:hover {
+  background: var(--gs-surface);
+  border-color: var(--gs-border-hover);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+.itemSelected {
+  background: var(--gs-info-bg);
+  border-color: var(--gs-info);
+}
+
+.itemSelected:hover {
+  background: var(--gs-info-bg);
+  border-color: var(--gs-info);
+}
+
+.itemSelected .chevron {
+  color: var(--gs-info);
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--gs-muted);
+}

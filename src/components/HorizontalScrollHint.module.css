@@ -1,0 +1,55 @@
+.root {
+  position: relative;
+  min-width: 0;
+  display: flex;
+}
+
+.scroller {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.hideScrollbar {
+  scrollbar-width: none;
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.root::before,
+.root::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--scroll-hint-size, 18px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.root::before {
+  left: 0;
+  background: linear-gradient(to right, var(--scroll-hint-bg, var(--gs-bg)), rgba(0, 0, 0, 0));
+}
+
+.root::after {
+  right: 0;
+  background: linear-gradient(to left, var(--scroll-hint-bg, var(--gs-bg)), rgba(0, 0, 0, 0));
+}
+
+.canScrollLeft::before {
+  opacity: 1;
+}
+
+.canScrollRight::after {
+  opacity: 1;
+}
+
+@media print {
+  .root::before,
+  .root::after {
+    display: none;
+  }
+}

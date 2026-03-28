@@ -1,0 +1,174 @@
+/* ============================================================
+   Base trigger styles
+   ============================================================ */
+.triggerBase {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-regular);
+}
+
+.triggerBase:focus {
+  outline: none;
+}
+
+.triggerBase:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   Size modifiers
+   ============================================================ */
+.sizeDefault {
+  height: var(--gs-control-height);
+  line-height: var(--gs-control-height);
+  padding: 0 var(--gs-space-2);
+  gap: var(--gs-control-gap);
+}
+
+.sizeCompact {
+  height: var(--gs-control-height-compact);
+  line-height: var(--gs-control-height-compact);
+  padding: 0 var(--gs-space-1);
+  gap: var(--gs-space-1);
+}
+
+/* ============================================================
+   Default variant (bordered select)
+   ============================================================ */
+.trigger {
+  border-radius: var(--gs-control-radius);
+  background: var(--gs-bg);
+  border: 1px solid var(--gs-border);
+  color: var(--gs-text);
+  font: inherit;
+  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.trigger:hover:not(.disabled):not(:focus) {
+  border-color: var(--gs-border-hover);
+}
+
+.trigger:focus {
+  border-color: var(--gs-info);
+}
+
+/* ============================================================
+   Badge variant (colored pill)
+   ============================================================ */
+.badgeTrigger {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: var(--gs-control-radius);
+  background: var(--deterministic-color-bg, var(--gs-surface));
+  color: var(--deterministic-color-fg, var(--gs-text));
+}
+
+:global(body.dark) .badgeTrigger {
+  background: var(--deterministic-color-bg-dark, var(--deterministic-color-bg, var(--gs-surface)));
+  color: var(--deterministic-color-fg-dark, var(--deterministic-color-fg, var(--gs-text)));
+}
+
+/* ============================================================
+   Labels and icons
+   ============================================================ */
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron,
+.chevron :global(svg) {
+  width: var(--gs-icon-size);
+  height: var(--gs-icon-size);
+  flex: 0 0 auto;
+}
+
+/* Badge uses smaller chevron with subtle opacity */
+.badgeTrigger .chevron,
+.badgeTrigger .chevron :global(svg) {
+  width: var(--gs-space-3);
+  height: var(--gs-space-3);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   Layout utilities
+   ============================================================ */
+.fillWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.fillWrapper > * {
+  width: 100%;
+}
+
+.fill {
+  display: flex;
+  width: 100%;
+}
+
+.fill .label {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+/* ============================================================
+   Menu styles
+   ============================================================ */
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  background: var(--gs-bg);
+  overflow: hidden;
+}
+
+.searchContainer {
+  flex-shrink: 0;
+  padding: var(--gs-space-2);
+  background: var(--gs-bg);
+  border-bottom: 1px solid var(--gs-border);
+}
+
+.menuContent {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.noResults {
+  padding: var(--gs-space-3);
+  color: var(--gs-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   Group styles
+   ============================================================ */
+.group {
+  /* Groups are purely structural containers */
+}
+
+.group + .group {
+  border-top: 1px solid var(--gs-border);
+}
+
+.groupHeader {
+  padding: var(--gs-space-2) var(--gs-space-3);
+  font-size: var(--gs-font-size-body);
+  font-weight: var(--gs-font-weight-medium);
+  color: var(--gs-muted);
+  user-select: none;
+  pointer-events: none;
+}

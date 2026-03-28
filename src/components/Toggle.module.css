@@ -1,0 +1,76 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gs-space-2);
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 36px;
+  height: 20px;
+  /* 10px: half of height for pill shape */
+  border-radius: 10px;
+  background: var(--gs-border-hover);
+  transition: background var(--gs-hover-transition);
+  flex-shrink: 0;
+}
+
+.root:hover:not(.disabled) .track:not([data-checked='true']) {
+  background: var(--gs-muted);
+}
+
+.track[data-checked='true'] {
+  background: var(--gs-info);
+}
+
+.track:focus-within {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.thumb {
+  position: absolute;
+  /* 2px: toggle knob inset from track edge */
+  left: 2px;
+  width: var(--gs-space-4);
+  height: var(--gs-space-4);
+  border-radius: 50%;
+  background: var(--gs-bg);
+  transition: transform var(--gs-duration-fast) var(--gs-ease-default);
+}
+
+.track[data-checked='true'] .thumb {
+  transform: translateX(var(--gs-space-4, 16px));
+}
+
+.label {
+  font-size: var(--gs-font-size-body);
+  color: var(--gs-text);
+  user-select: none;
+}
+
+/* ---- Reduced motion: instant toggle ---- */
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition: none;
+  }
+}

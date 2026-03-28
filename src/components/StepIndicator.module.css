@@ -1,0 +1,70 @@
+.container {
+  /* Container */
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-space-2);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gs-space-1);
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--gs-font-size-body);
+  white-space: nowrap;
+}
+
+.checkmark {
+  flex-shrink: 0;
+}
+
+/* Completed - green text, clickable */
+.completed {
+  color: var(--gs-success);
+  cursor: pointer;
+}
+
+.completed:hover {
+  text-decoration: underline;
+}
+
+.completed:focus-visible {
+  outline: 2px solid var(--gs-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Current - emphasized with background */
+.current {
+  padding: var(--gs-space-1) var(--gs-space-2);
+  background: var(--gs-info-bg);
+  color: var(--gs-info);
+  font-weight: var(--gs-font-weight-medium);
+  border-radius: var(--gs-control-radius);
+}
+
+/* Upcoming - muted */
+.upcoming {
+  color: var(--gs-muted);
+}
+
+/* Separator dot */
+.separator {
+  color: var(--gs-border);
+  font-size: var(--gs-font-size-body);
+  user-select: none;
+}
