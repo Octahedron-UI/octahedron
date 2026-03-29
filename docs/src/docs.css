@@ -303,3 +303,67 @@ body {
   white-space: pre;
 }
 
+/* Hamburger — hidden on desktop */
+.docs-hamburger {
+  display: none !important;
+}
+
+/* Sidebar overlay — CSS controls visibility, never React */
+.docs-sidebar-overlay {
+  display: none;
+}
+
+/* ── Hide TOC on narrow viewports ── */
+@media (max-width: 960px) {
+  .docs-toc {
+    display: none;
+  }
+}
+
+/* ── Collapse sidebar on mobile ── */
+@media (max-width: 768px) {
+  .docs-hamburger {
+    display: flex !important;
+  }
+
+  .docs-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: var(--octa-z-overlay);
+    transform: translateX(-100%);
+  }
+
+  .docs-sidebar[data-open] {
+    transform: translateX(0);
+    animation: sidebar-in var(--octa-duration-slow) var(--octa-ease-out);
+  }
+
+  .docs-sidebar-overlay[data-open] {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--octa-z-overlay) - 1);
+    background: var(--octa-overlay);
+    animation: overlay-in var(--octa-duration-slow) var(--octa-ease-out);
+  }
+
+  @keyframes sidebar-in {
+    from { transform: translateX(-100%); }
+  }
+
+  @keyframes overlay-in {
+    from { opacity: 0; }
+  }
+
+  .docs-main {
+    padding: var(--octa-space-4);
+  }
+
+  .docs-search-panel {
+    width: calc(100vw - var(--octa-space-6));
+    margin: var(--octa-space-4) auto 0;
+  }
+}
+

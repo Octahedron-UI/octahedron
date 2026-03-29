@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, CollapsibleSection } from 'octahedron';
+import { Button, CollapsibleSection, HamburgerButton } from 'octahedron';
 import { Octahedron } from './components/Octahedron';
 import { TableOfContents } from './components/TableOfContents';
 import { SearchModal } from './components/SearchModal';
@@ -171,12 +171,30 @@ const PAGES: Record<string, () => JSX.Element> = {
   loading: LoadingPage,
 };
 
+function useHashPage() {
+  const read = () => location.hash.replace('#', '') || 'getting-started';
+  const [page, setPageState] = useState(read);
+
+  useEffect(() => {
+    const handler = () => setPageState(read());
+    window.addEventListener('hashchange', handler);
+    return () => window.removeEventListener('hashchange', handler);
+  }, []);
+
+  const setPage = (id: string) => {
+    location.hash = id;
+  };
+
+  return [page, setPage] as const;
+}
+
 export function App() {
-  const [page, setPage] = useState('getting-started');
+  const [page, setPage] = useHashPage();
   const [dark, setDark] = useState(() => localStorage.getItem('octa-docs-theme') !== 'light');
   const Page = PAGES[page] ?? GettingStartedPage;
   const mainRef = useRef<HTMLDivElement>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
@@ -201,9 +219,15 @@ export function App() {
     return () => document.removeEventListener('keydown', handleKey);
   }, []);
 
+
   return (
     <div className="docs-layout">
       <header className="docs-header">
+        <HamburgerButton
+          open={sidebarOpen}
+          onClick={() => setSidebarOpen((o) => !o)}
+          className="docs-hamburger"
+        />
         <div className="docs-header-brand">
           <Octahedron className="docs-logo-icon" />
           <div className="docs-logo">Octahedron</div>
@@ -242,7 +266,12 @@ export function App() {
         onSelect={setPage}
       />
       <div className="docs-below-header">
-        <aside className="docs-sidebar">
+        <div
+          className="docs-sidebar-overlay"
+          data-open={sidebarOpen || undefined}
+          onClick={() => setSidebarOpen(false)}
+        />
+        <aside className="docs-sidebar" data-open={sidebarOpen || undefined}>
           {Object.entries(groups).map(([group, items]) => (
             <CollapsibleSection
               key={group}
@@ -256,7 +285,10 @@ export function App() {
                   key={item.id}
                   className="docs-nav-item"
                   data-active={page === item.id}
-                  onClick={() => setPage(item.id)}
+                  onClick={() => {
+                    setPage(item.id);
+                    setSidebarOpen(false);
+                  }}
                 >
                   {item.label}
                 </button>
