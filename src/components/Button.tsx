@@ -156,6 +156,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           aria-label={ariaLabel}
           disabled={disabled || loading}
           aria-busy={loading || undefined}
+          onClick={onClick}
           className={iconOnlyClass}
         >
           {sharedContent}
