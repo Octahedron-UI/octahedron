@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { ChevronRight as ChevronRightIcon } from './AppIcon';
 import { cn } from '../lib/cn';
-import styles from './BreadCrumbs.module.css';
+import styles from './Breadcrumbs.module.css';
 
 export type BreadcrumbItem = {
   label: ReactNode;
