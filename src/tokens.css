@@ -57,7 +57,7 @@
 
 /* ── Light theme (default) ───────────────────────────────────────── */
 
-:root, body {
+:root, [data-theme="light"] {
   --octa-surface: #f3f4f6;
   --octa-border: #d1d5db;
   --octa-border-hover: #6b7280;
