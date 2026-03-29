@@ -1,0 +1,305 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--octa-bg-app);
+  color: var(--octa-text);
+  font-family: var(--octa-font-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: var(--octa-font-size-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.docs-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.docs-header {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-4);
+  padding: var(--octa-space-3) var(--octa-space-5);
+  border-bottom: 1px solid var(--octa-border);
+  background: var(--octa-bg-app);
+  flex-shrink: 0;
+}
+
+.docs-header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-2);
+  flex-shrink: 0;
+}
+
+
+
+.docs-below-header {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.docs-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--octa-border);
+  overflow-y: auto;
+  padding: var(--octa-space-2) 0;
+  background: var(--octa-bg-app);
+}
+
+.docs-body {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+/* Search dialog */
+.docs-search-dialog {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.docs-search-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.docs-search-panel {
+  width: 560px;
+  max-height: min(480px, 80vh);
+  margin: 10vh auto 0;
+  background: var(--octa-bg-app);
+  border: 1px solid var(--octa-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.docs-search-input-row {
+  padding: var(--octa-space-4);
+  border-bottom: 1px solid var(--octa-border);
+}
+
+.docs-search-results {
+  overflow-y: auto;
+  padding: var(--octa-space-2);
+}
+
+.docs-search-group-label {
+  padding: var(--octa-space-2) var(--octa-space-3);
+}
+
+.docs-search-item {
+  display: block;
+  width: 100%;
+  padding: var(--octa-space-2) var(--octa-space-3);
+  border: none;
+  background: none;
+  color: var(--octa-text);
+  font-size: var(--octa-font-size-body);
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--octa-radius-sm);
+}
+
+.docs-search-item:hover {
+  background: var(--octa-hover-bg);
+}
+
+.docs-search-item[data-active] {
+  background: var(--octa-info);
+  color: white;
+}
+
+.docs-search-empty {
+  padding: var(--octa-space-6);
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.docs-body-inner {
+  display: flex;
+  min-height: 100%;
+}
+
+.docs-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--octa-space-6);
+  max-width: 960px;
+}
+
+/* Table of Contents */
+.docs-toc {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  padding: var(--octa-space-6) var(--octa-space-4) var(--octa-space-6) 0;
+}
+
+.docs-toc-item {
+  display: block;
+  padding: var(--octa-space-1) var(--octa-space-3);
+  font-size: var(--octa-font-size-body);
+  color: var(--octa-muted);
+  text-decoration: none;
+  border-left: 1px solid var(--octa-border);
+}
+
+.docs-toc-item:hover {
+  color: var(--octa-text);
+}
+
+.docs-toc-item[data-active] {
+  color: var(--octa-text);
+  border-left: 2px solid var(--octa-info);
+  padding-left: calc(var(--octa-space-3) - 1px);
+}
+
+/* Sidebar */
+.docs-logo-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.docs-logo {
+  font-size: var(--octa-font-size-title);
+  font-weight: var(--octa-font-weight-semibold);
+  color: var(--octa-text);
+}
+
+.docs-nav-section button[aria-expanded] {
+  font-size: var(--octa-font-size-body);
+  padding: var(--octa-space-2) var(--octa-space-4);
+}
+
+.docs-nav-section button[aria-expanded] span {
+  font-weight: var(--octa-font-weight-medium);
+}
+
+.docs-nav-section .docs-nav-item {
+  padding-left: var(--octa-space-6);
+}
+
+.docs-nav-item {
+  display: block;
+  padding: var(--octa-space-2) var(--octa-space-4);
+  color: var(--octa-muted);
+  text-decoration: none;
+  font-size: var(--octa-font-size-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.docs-nav-item:hover {
+  color: var(--octa-text);
+  background: var(--octa-hover-bg);
+}
+
+.docs-nav-item[data-active="true"] {
+  color: var(--octa-text);
+  background: var(--octa-hover-bg);
+  font-weight: var(--octa-font-weight-medium);
+}
+
+/* Page content */
+.docs-title {
+  font-size: 24px;
+  font-weight: var(--octa-font-weight-semibold);
+  margin: 0 0 var(--octa-space-2);
+}
+
+.docs-description {
+  color: var(--octa-muted);
+  margin: 0 0 var(--octa-space-5);
+}
+
+.docs-section {
+  margin-bottom: var(--octa-space-6);
+}
+
+.docs-section-title {
+  font-size: 16px;
+  font-weight: var(--octa-font-weight-semibold);
+  margin: 0 0 var(--octa-space-3);
+}
+
+/* Code block (non-interactive) */
+.docs-code-block {
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  background: var(--octa-bg-app);
+  font-family: var(--octa-font-mono);
+  font-size: 12px;
+  color: var(--octa-muted);
+  overflow-x: auto;
+  white-space: pre;
+  margin: 0 0 var(--octa-space-4);
+}
+
+/* Demo block */
+.docs-demo {
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  overflow: hidden;
+  margin-bottom: var(--octa-space-4);
+}
+
+.docs-demo-preview {
+  padding: var(--octa-space-3) var(--octa-space-4);
+  background: var(--octa-surface);
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-3);
+  flex-wrap: wrap;
+}
+
+.docs-demo-preview code {
+  font-family: var(--octa-font-mono);
+  font-size: 12px;
+  white-space: pre;
+}
+
+.docs-demo-preview[data-direction="column"] {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.docs-demo-code {
+  border-top: 1px solid var(--octa-border);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  background: var(--octa-bg-app);
+  font-family: var(--octa-font-mono);
+  font-size: 12px;
+  color: var(--octa-muted);
+  overflow-x: auto;
+  white-space: pre;
+}
+

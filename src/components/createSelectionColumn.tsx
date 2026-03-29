@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { TableSelectionCheckbox } from './TableSelectionCheckbox';
+import { Checkbox } from './Checkbox';
 import type { TablePageSelection } from './useTablePageSelection';
 
 type SelectionColumnConfig<Row> = {
@@ -62,10 +62,10 @@ export function createSelectionColumn<Row>({
     align: 'center',
     noPadding: true,
     skeleton: (
-      <TableSelectionCheckbox checked={false} disabled ariaLabel="Loading" onValueChange={() => {}} />
+      <Checkbox checked={false} disabled ariaLabel="Loading" onValueChange={() => {}} />
     ),
     header: (
-      <TableSelectionCheckbox
+      <Checkbox
         checked={selection.summary.allSelected}
         indeterminate={selection.summary.indeterminate}
         disabled={disabled || selection.summary.totalSelectable === 0}
@@ -74,7 +74,15 @@ export function createSelectionColumn<Row>({
             ? `Unselect all ${itemsLabel} on this page`
             : `Select all ${itemsLabel} on this page`
         }
-        onValueChange={selection.setAllSelected}
+        onValueChange={(nextChecked) => {
+          // When indeterminate, Checkbox fires true (standard behavior).
+          // We want indeterminate click to deselect all, so invert.
+          if (selection.summary.indeterminate && nextChecked) {
+            selection.setAllSelected(false);
+          } else {
+            selection.setAllSelected(nextChecked);
+          }
+        }}
       />
     ),
     cell: (row: Row) => {
@@ -82,7 +90,7 @@ export function createSelectionColumn<Row>({
       const checked = selection.selectedIds.has(id);
       const label = getRowLabel(row);
       return (
-        <TableSelectionCheckbox
+        <Checkbox
           checked={checked}
           disabled={disabled}
           ariaLabel={`${checked ? 'Unselect' : 'Select'} ${label}`}

@@ -1,0 +1,23 @@
+/* ── CodeMirror syntax tokens ────────────────────────────────────── */
+
+body {
+  --cm-keyword: #af00db;
+  --cm-function: #795e26;
+  --cm-variable: #001080;
+  --cm-number: #098658;
+  --cm-string: #a31515;
+  --cm-operator: #000000;
+  --cm-punctuation: #000000;
+  --cm-comment: #008000;
+}
+
+[data-theme="dark"] {
+  --cm-keyword: #c586c0;
+  --cm-function: #dcdcaa;
+  --cm-variable: #9cdcfe;
+  --cm-number: #b5cea8;
+  --cm-string: #ce9178;
+  --cm-operator: #d4d4d4;
+  --cm-punctuation: #d4d4d4;
+  --cm-comment: #6a9955;
+}

@@ -1,0 +1,32 @@
+.card {
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
+  min-width: 0;
+}
+
+.clipped {
+  overflow: hidden;
+}
+
+.paddedSm {
+  padding: var(--octa-space-2);
+}
+
+.paddedMd {
+  padding: var(--octa-space-4);
+}
+
+.interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.interactive:hover {
+  background: var(--octa-hover-bg);
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--octa-focus-ring);
+  outline-offset: 2px;
+}

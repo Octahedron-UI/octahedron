@@ -6,7 +6,7 @@
   max-width: none;
   max-height: none;
   margin: 0;
-  padding: var(--gs-space-5);
+  padding: var(--octa-space-5);
   border: none;
   background: transparent;
   overflow: hidden;
@@ -19,8 +19,8 @@
 }
 
 .dialog::backdrop {
-  background: var(--gs-overlay);
-  animation: backdrop-enter var(--gs-duration-moderate) var(--gs-ease-default);
+  background: var(--octa-overlay);
+  animation: backdrop-enter var(--octa-duration-moderate) var(--octa-ease-default);
 }
 
 @keyframes backdrop-enter {
@@ -35,10 +35,10 @@
   flex-direction: column;
   max-height: calc(100vh - 48px);
   max-width: calc(100vw - 48px);
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-control-radius);
-  background: var(--gs-bg);
-  animation: modal-enter var(--gs-duration-moderate) var(--gs-ease-out);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
+  animation: modal-enter var(--octa-duration-moderate) var(--octa-ease-out);
 }
 
 @keyframes modal-enter {
@@ -50,7 +50,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .container {
-    animation: modal-enter-reduced var(--gs-duration-fast) var(--gs-ease-default);
+    animation: modal-enter-reduced var(--octa-duration-fast) var(--octa-ease-default);
   }
 
   @keyframes modal-enter-reduced {
@@ -68,9 +68,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--gs-space-3);
-  padding: var(--gs-space-3) var(--gs-space-4);
-  border-bottom: 1px solid var(--gs-border);
+  gap: var(--octa-space-3);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-bottom: 1px solid var(--octa-border);
   flex-shrink: 0;
 }
 
@@ -85,17 +85,17 @@
 .error {
   display: flex;
   align-items: flex-start;
-  gap: var(--gs-space-3);
-  padding: var(--gs-space-3) var(--gs-space-4);
-  background: color-mix(in srgb, var(--gs-danger) 8%, var(--gs-bg));
-  border-bottom: 1px solid var(--gs-border);
-  color: var(--gs-text);
-  font-size: var(--gs-font-size-body);
+  gap: var(--octa-space-3);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  background: color-mix(in srgb, var(--octa-danger) 8%, var(--octa-bg-app));
+  border-bottom: 1px solid var(--octa-border);
+  color: var(--octa-text);
+  font-size: var(--octa-font-size-body);
   flex-shrink: 0;
 }
 
 .errorIcon {
-  color: var(--gs-danger);
+  color: var(--octa-danger);
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -113,8 +113,8 @@
 }
 
 .footer {
-  padding: var(--gs-space-3) var(--gs-space-4);
-  border-top: 1px solid var(--gs-border);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-top: 1px solid var(--octa-border);
   flex-shrink: 0;
 }
 
@@ -122,5 +122,5 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
 }

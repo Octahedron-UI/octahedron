@@ -1,9 +1,7 @@
-import type { ButtonHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { cn } from '../lib/cn';
 import { avatarColor } from '../lib/deterministic-colors';
-import controlStyles from './ControlButton.module.css';
+import { Button, type ButtonProps } from './Button';
 import styles from './UserAvatarButton.module.css';
 
 /** Extract the first character as an uppercase initial, or '?' if empty */
@@ -13,27 +11,30 @@ function normalizeInitial(value: string): string {
   return trimmed.slice(0, 1).toUpperCase();
 }
 
-export type UserAvatarButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> & {
+export type UserAvatarButtonProps = Omit<ButtonProps, 'icon' | 'variant' | 'children'> & {
   /** Display name or email - used for initial and color generation */
   name: string;
 };
 
 export const UserAvatarButton = forwardRef<HTMLButtonElement, UserAvatarButtonProps>(
-  function UserAvatarButton({ name, className, ...props }, ref) {
+  function UserAvatarButton({ name, ariaLabel, 'aria-label': htmlAriaLabel, ...props }, ref) {
     const initial = normalizeInitial(name);
     const color = avatarColor(name);
 
+    const avatar = (
+      <span className={styles.avatar} style={{ backgroundColor: color }}>
+        <span className={styles.initial}>{initial}</span>
+      </span>
+    );
+
     return (
-      <button
+      <Button
         ref={ref}
-        type="button"
+        variant="ghost"
+        icon={avatar}
+        ariaLabel={ariaLabel ?? htmlAriaLabel ?? name}
         {...props}
-        className={cn(controlStyles.control, controlStyles.iconOnly, className)}
-      >
-        <span className={styles.avatar} style={{ backgroundColor: color }}>
-          <span className={styles.initial}>{initial}</span>
-        </span>
-      </button>
+      />
     );
   },
 );

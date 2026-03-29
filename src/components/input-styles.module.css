@@ -19,32 +19,32 @@
 
 .textareaBase {
   width: 100%;
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-control-radius);
-  background: var(--gs-bg);
-  color: var(--gs-text);
-  font-size: var(--gs-font-size-body);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
+  color: var(--octa-text);
+  font-size: var(--octa-font-size-body);
   font-family: inherit;
   box-sizing: border-box;
-  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+  transition: border-color var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .textareaBase:hover:not(:focus):not(:disabled) {
-  border-color: var(--gs-border-hover);
+  border-color: var(--octa-border-hover);
 }
 
 .textareaBase:focus {
   outline: none;
-  border-color: var(--gs-info);
+  border-color: var(--octa-info);
 }
 
 .textareaBase:disabled {
-  opacity: 0.6;
+  opacity: var(--octa-disabled-opacity);
   cursor: not-allowed;
 }
 
 .textareaBase::placeholder {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
 }
 
 /* ============================================
@@ -53,7 +53,7 @@
 
 .textarea {
   composes: textareaBase;
-  padding: var(--gs-space-2);
+  padding: var(--octa-space-2);
   resize: vertical;
   min-height: 60px;
 }
@@ -61,7 +61,7 @@
 /* Taller variant for larger text areas */
 .textareaLarge {
   composes: textareaBase;
-  padding: var(--gs-space-2);
+  padding: var(--octa-space-2);
   resize: vertical;
   min-height: 80px;
 }
@@ -70,7 +70,7 @@
    Padding matches ControlButton: control-padding vertical, double horizontal. */
 .textareaCompact {
   composes: textareaBase;
-  padding: var(--gs-control-padding) calc(var(--gs-control-padding) * 2);
+  padding: var(--octa-control-padding) calc(var(--octa-control-padding) * 2);
   field-sizing: content;
   resize: none;
 }
@@ -80,28 +80,28 @@
    ============================================ */
 
 .dateInput {
-  padding: var(--gs-space-2);
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-control-radius);
-  background: var(--gs-bg);
-  color: var(--gs-text);
-  font-size: var(--gs-font-size-body);
+  padding: var(--octa-space-2);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
+  color: var(--octa-text);
+  font-size: var(--octa-font-size-body);
   font-family: inherit;
   box-sizing: border-box;
-  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+  transition: border-color var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .dateInput:hover:not(:focus):not(:disabled) {
-  border-color: var(--gs-border-hover);
+  border-color: var(--octa-border-hover);
 }
 
 .dateInput:focus {
   outline: none;
-  border-color: var(--gs-info);
+  border-color: var(--octa-info);
 }
 
 .dateInput:disabled {
-  opacity: 0.6;
+  opacity: var(--octa-disabled-opacity);
   cursor: not-allowed;
 }
 
@@ -113,23 +113,23 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: var(--gs-control-height);
-  padding: 0 var(--gs-space-2);
-  font-size: var(--gs-font-size-body);
-  color: var(--gs-text);
-  background: var(--gs-bg);
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-control-radius);
+  height: var(--octa-control-height);
+  padding: 0 var(--octa-space-2);
+  font-size: var(--octa-font-size-body);
+  color: var(--octa-text);
+  background: var(--octa-bg-app);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
   box-sizing: border-box;
-  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+  transition: border-color var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .formInputWrapper:hover:not(:focus-within) {
-  border-color: var(--gs-border-hover);
+  border-color: var(--octa-border-hover);
 }
 
 .formInputWrapper:focus-within {
-  border-color: var(--gs-info);
+  border-color: var(--octa-info);
   outline: none;
 }
 
@@ -145,6 +145,6 @@
 }
 
 .formInputWrapper input:disabled {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
   cursor: not-allowed;
 }

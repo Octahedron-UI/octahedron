@@ -1,25 +1,25 @@
 .banner {
   display: flex;
   align-items: center;
-  gap: var(--gs-space-3);
-  padding: var(--gs-space-3) var(--gs-space-4);
-  border-bottom: 1px solid var(--gs-border);
+  gap: var(--octa-space-3);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-bottom: 1px solid var(--octa-border);
 }
 
 .callout {
   display: flex;
   align-items: center;
-  gap: var(--gs-space-3);
-  padding: var(--gs-space-3) var(--gs-space-4);
-  border-radius: var(--gs-control-radius);
+  gap: var(--octa-space-3);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-radius: var(--octa-control-radius);
 }
 
 .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--gs-space-4);
-  height: var(--gs-space-4);
+  width: var(--octa-space-4);
+  height: var(--octa-space-4);
   flex-shrink: 0;
 }
 
@@ -34,19 +34,19 @@
 }
 
 .title {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-text);
 }
 
 .title + .body {
-  margin-top: var(--gs-space-1);
+  margin-top: var(--octa-space-1);
 }
 
 .body {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
-  color: var(--gs-muted);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
+  color: var(--octa-muted);
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -56,7 +56,7 @@
 }
 
 .body p + p {
-  margin-top: var(--gs-space-1);
+  margin-top: var(--octa-space-1);
 }
 
 .action {
@@ -66,50 +66,50 @@
 
 /* Intent: none */
 .none {
-  background: var(--gs-hover-bg);
-  color: var(--gs-text);
+  background: var(--octa-hover-bg);
+  color: var(--octa-text);
 }
 
 .none .icon {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
 }
 
 /* Intent: success */
 .success {
-  background: var(--gs-success-bg);
-  color: var(--gs-text);
+  background: var(--octa-success-bg);
+  color: var(--octa-text);
 }
 
 .success .icon {
-  color: var(--gs-success);
+  color: var(--octa-success);
 }
 
 /* Intent: warning */
 .warning {
-  background: var(--gs-warning-bg);
-  color: var(--gs-text);
+  background: var(--octa-warning-bg);
+  color: var(--octa-text);
 }
 
 .warning .icon {
-  color: var(--gs-warning);
+  color: var(--octa-warning);
 }
 
 /* Intent: danger */
 .danger {
-  background: var(--gs-danger-bg);
-  color: var(--gs-text);
+  background: var(--octa-danger-bg);
+  color: var(--octa-text);
 }
 
 .danger .icon {
-  color: var(--gs-danger);
+  color: var(--octa-danger);
 }
 
 /* Intent: info */
 .info {
-  background: var(--gs-info-bg);
-  color: var(--gs-text);
+  background: var(--octa-info-bg);
+  color: var(--octa-text);
 }
 
 .info .icon {
-  color: var(--gs-info);
+  color: var(--octa-info);
 }

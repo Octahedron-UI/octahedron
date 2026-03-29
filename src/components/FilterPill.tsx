@@ -7,12 +7,12 @@ import { Input } from './Input';
 import { Select, type SelectOption } from './Select';
 import styles from './FilterPill.module.css';
 
-type FilterPillOption = {
+export type FilterPillOption = {
   value: string;
   label: ReactNode;
 };
 
-type FilterPillSelect = {
+export type FilterPillSelect = {
   value: string;
   label: ReactNode;
   options: readonly FilterPillOption[];
@@ -28,7 +28,7 @@ type FilterPillSelect = {
  * - `kind: 'text'` — free-text input
  * - `kind: 'none'` — no value input (for operators like isNull/isNotNull)
  */
-type FilterPillSelectValue = {
+export type FilterPillSelectValue = {
   kind: 'select';
   value: string;
   label: ReactNode;
@@ -39,7 +39,7 @@ type FilterPillSelectValue = {
   title?: string;
 };
 
-type FilterPillTextValue = {
+export type FilterPillTextValue = {
   kind: 'text';
   value: string;
   placeholder?: string;
@@ -53,13 +53,13 @@ type FilterPillTextValue = {
   autoFocus?: boolean;
 };
 
-type FilterPillNoneValue = {
+export type FilterPillNoneValue = {
   kind: 'none';
 };
 
-type FilterPillValue = FilterPillSelectValue | FilterPillTextValue | FilterPillNoneValue;
+export type FilterPillValue = FilterPillSelectValue | FilterPillTextValue | FilterPillNoneValue;
 
-type FilterPillProps = {
+export type FilterPillProps = {
   column: FilterPillSelect;
   operator: FilterPillSelect;
   value: FilterPillValue;

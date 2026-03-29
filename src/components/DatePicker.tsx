@@ -44,7 +44,7 @@ import { AppIcon } from './AppIcon';
 
 import styles from './DatePicker.module.css';
 
-type DatePickerProps = {
+export type DatePickerProps = {
   /** Current value in YYYY-MM-DD format */
   value?: string;
   /** Callback when the selected date changes (YYYY-MM-DD string, or empty string when cleared) */
@@ -431,7 +431,7 @@ export function DatePicker({
 
       {open && (
         <FloatingPortal root={portalRoot ?? undefined}>
-          <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
+          <FloatingFocusManager context={context} modal={false} initialFocus={-1} returnFocus={false}>
             <div
               ref={refs.setFloating}
               className={styles.calendar}

@@ -10,7 +10,7 @@ import {
 
 import { AppIcon } from './AppIcon';
 import { Text } from './Text';
-import { ControlButton, ControlIconButton } from './ControlButton';
+import { Button } from './Button';
 import { FloatingPortalProvider } from './FloatingPortalProvider';
 import { cn } from '../lib/cn';
 import styles from './Modal.module.css';
@@ -134,7 +134,7 @@ export function Modal({
             <Text variant="title" as="div" className={styles.title} id={titleId}>
               {title}
             </Text>
-            <ControlIconButton
+            <Button
               icon={<AppIcon name="cross" />}
               ariaLabel="Close"
               onClick={handleClose}
@@ -154,13 +154,13 @@ export function Modal({
         </div>
       </dialog>
 
-      <dialog ref={confirmDialogRef} className={styles.dialog} onCancel={handleConfirmDialogCancel}>
+      <dialog ref={confirmDialogRef} className={styles.dialog} aria-label="Discard changes?" onCancel={handleConfirmDialogCancel}>
         <div className={styles.container} style={{ width: 400 }}>
           <div className={styles.header}>
             <Text variant="title" as="div" className={styles.title}>
               Discard changes?
             </Text>
-            <ControlIconButton
+            <Button
               icon={<AppIcon name="cross" />}
               ariaLabel="Close"
               onClick={handleCancelDiscard}
@@ -170,10 +170,10 @@ export function Modal({
           <div className={styles.body}>You have unsaved changes that will be lost.</div>
           <div className={styles.footer}>
             <ModalActions>
-              <ControlButton onClick={handleCancelDiscard}>Cancel</ControlButton>
-              <ControlButton color="warning" onClick={handleConfirmDiscard}>
+              <Button onClick={handleCancelDiscard}>Cancel</Button>
+              <Button color="warning" onClick={handleConfirmDiscard}>
                 Discard
-              </ControlButton>
+              </Button>
             </ModalActions>
           </div>
         </div>

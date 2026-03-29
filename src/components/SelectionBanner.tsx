@@ -1,6 +1,6 @@
 import styles from './SelectionBanner.module.css';
 
-type SelectionBannerProps = {
+export type SelectionBannerProps = {
   /** Whether all items on the current page are selected */
   allPageItemsSelected: boolean;
   /** Number of items on current page */

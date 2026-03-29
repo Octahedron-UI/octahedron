@@ -4,7 +4,7 @@ import { ChevronRight as ChevronRightIcon } from './AppIcon';
 import { cn } from '../lib/cn';
 import styles from './BreadCrumbs.module.css';
 
-export type BreadCrumbItem = {
+export type BreadcrumbItem = {
   label: ReactNode;
   /** URL to navigate to */
   href?: string;
@@ -12,11 +12,11 @@ export type BreadCrumbItem = {
   onClick?: () => void;
 };
 
-export function BreadCrumbs({
+export function Breadcrumbs({
   items,
   ariaLabel = 'Breadcrumb',
 }: {
-  items: BreadCrumbItem[];
+  items: BreadcrumbItem[];
   ariaLabel?: string;
 }) {
   if (items.length === 0) return null;

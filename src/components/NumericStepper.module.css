@@ -2,14 +2,14 @@
 .stepper {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-radius-sm);
-  background: var(--gs-bg);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-radius-sm);
+  background: var(--octa-bg-app);
   overflow: hidden;
 }
 
 .stepper.disabled {
-  opacity: 0.4;
+  opacity: var(--octa-disabled-opacity);
   pointer-events: none;
 }
 
@@ -22,40 +22,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-muted);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-muted);
   cursor: pointer;
   transition:
-    background var(--gs-duration-fast) var(--gs-ease-default),
-    color var(--gs-duration-fast) var(--gs-ease-default);
+    background var(--octa-duration-fast) var(--octa-ease-default),
+    color var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .button:hover:not(:disabled) {
-  background: var(--gs-hover-bg);
-  color: var(--gs-text);
+  background: var(--octa-hover-bg);
+  color: var(--octa-text);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }
 
 .button:disabled {
-  opacity: 0.4;
+  opacity: var(--octa-disabled-opacity);
   cursor: not-allowed;
 }
 
 .value {
   min-width: 32px;
   text-align: center;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
   font-variant-numeric: tabular-nums;
-  color: var(--gs-text);
-  border-left: 1px solid var(--gs-border);
-  border-right: 1px solid var(--gs-border);
-  padding: 0 var(--gs-space-1);
+  color: var(--octa-text);
+  border-left: 1px solid var(--octa-border);
+  border-right: 1px solid var(--octa-border);
+  padding: 0 var(--octa-space-1);
   height: 28px;
   line-height: 28px;
 }

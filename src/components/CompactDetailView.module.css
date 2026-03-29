@@ -1,0 +1,25 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Compact Detail View
+ *
+ * Full-screen detail view for master-detail navigation in narrow viewports.
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+.container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--octa-bg-app);
+  z-index: var(--octa-z-base);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Content
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

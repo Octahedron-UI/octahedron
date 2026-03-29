@@ -402,6 +402,7 @@ export function Select({
               <MenuItem
                 key={entry.value}
                 id={optionId(entry.value)}
+                role="option"
                 icon={entry.icon}
                 disabled={entry.disabled}
                 active={value !== undefined && entry.value === value}
@@ -438,12 +439,12 @@ export function Select({
             />
           </div>
           <div className={styles.menuContent} role="listbox">
-            <Menu className={menuClassName}>{renderMenuContent()}</Menu>
+            <Menu className={menuClassName} role="presentation">{renderMenuContent()}</Menu>
           </div>
         </div>
       ) : (
         <div role="listbox">
-          <Menu className={menuClassName}>{renderMenuContent()}</Menu>
+          <Menu className={menuClassName} role="presentation">{renderMenuContent()}</Menu>
         </div>
       )}
     </Popover>

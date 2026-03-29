@@ -26,17 +26,17 @@
   width: var(--scroll-hint-size, 18px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--gs-duration-fast) var(--gs-ease-default);
+  transition: opacity var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .root::before {
   left: 0;
-  background: linear-gradient(to right, var(--scroll-hint-bg, var(--gs-bg)), rgba(0, 0, 0, 0));
+  background: linear-gradient(to right, var(--scroll-hint-bg, var(--octa-bg-app)), rgba(0, 0, 0, 0));
 }
 
 .root::after {
   right: 0;
-  background: linear-gradient(to left, var(--scroll-hint-bg, var(--gs-bg)), rgba(0, 0, 0, 0));
+  background: linear-gradient(to left, var(--scroll-hint-bg, var(--octa-bg-app)), rgba(0, 0, 0, 0));
 }
 
 .canScrollLeft::before {

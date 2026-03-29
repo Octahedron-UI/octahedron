@@ -242,7 +242,7 @@ const ICONS: Record<AppIconName, IconComponent> = {
   'warning-sign': AlertTriangle,
 };
 
-// Default icon size matching design system (--gs-icon-size: 14px)
+// Default icon size matching design system (--octa-icon-size: 14px)
 const DEFAULT_SIZE = 14;
 
 export type AppIconProps = {

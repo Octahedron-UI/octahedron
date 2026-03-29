@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** Muted dash for empty/null values in tables. Use with `value ?? EMPTY_CELL`. */
-export const EMPTY_CELL = <span style={{ color: 'var(--gs-muted)' }}>—</span>;
+export const EMPTY_CELL = <span style={{ color: 'var(--octa-muted)' }}>—</span>;
 
 // Match DataTable's column type exactly
 type ColumnDef<Row> = {
@@ -47,8 +47,8 @@ export function booleanColumn<Row>(
  */
 export function BooleanIndicator({ value }: { value: boolean | null | undefined }) {
   return value ? (
-    <span style={{ color: 'var(--gs-success)' }}>✓</span>
+    <span style={{ color: 'var(--octa-success)' }}>✓</span>
   ) : (
-    <span style={{ color: 'var(--gs-muted)' }}>—</span>
+    <span style={{ color: 'var(--octa-muted)' }}>—</span>
   );
 }

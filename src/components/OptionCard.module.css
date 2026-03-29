@@ -3,63 +3,63 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--gs-space-1);
-  padding: var(--gs-space-2);
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-control-radius);
-  background: var(--gs-bg);
+  gap: var(--octa-space-1);
+  padding: var(--octa-space-2);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
   cursor: pointer;
   user-select: none;
   text-align: left;
   font: inherit;
-  line-height: var(--gs-control-height-compact);
+  line-height: var(--octa-control-height-compact);
   width: 100%;
 }
 
 .card:hover {
-  background: var(--gs-hover-bg);
+  background: var(--octa-hover-bg);
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: 2px;
 }
 
 /* Primary (success) variant */
 .primary {
-  border-color: color-mix(in srgb, var(--gs-success) 50%, transparent);
-  background: color-mix(in srgb, var(--gs-success) 6%, transparent);
+  border-color: color-mix(in srgb, var(--octa-success) 50%, transparent);
+  background: color-mix(in srgb, var(--octa-success) 6%, transparent);
 }
 
 .primary:hover {
-  border-color: var(--gs-success);
-  background: color-mix(in srgb, var(--gs-success) 12%, transparent);
+  border-color: var(--octa-success);
+  background: color-mix(in srgb, var(--octa-success) 12%, transparent);
 }
 
 .primary .label {
-  color: var(--gs-success);
+  color: var(--octa-success);
 }
 
 /* Danger variant */
 .danger {
-  border-color: color-mix(in srgb, var(--gs-danger) 50%, transparent);
-  background: color-mix(in srgb, var(--gs-danger) 6%, transparent);
+  border-color: color-mix(in srgb, var(--octa-danger) 50%, transparent);
+  background: color-mix(in srgb, var(--octa-danger) 6%, transparent);
 }
 
 .danger:hover {
-  border-color: var(--gs-danger);
-  background: color-mix(in srgb, var(--gs-danger) 12%, transparent);
+  border-color: var(--octa-danger);
+  background: color-mix(in srgb, var(--octa-danger) 12%, transparent);
 }
 
 .danger .label {
-  color: var(--gs-danger);
+  color: var(--octa-danger);
 }
 
 .label {
-  color: var(--gs-text);
-  font-weight: var(--gs-font-weight-medium);
+  color: var(--octa-text);
+  font-weight: var(--octa-font-weight-medium);
 }
 
 .description {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
 }

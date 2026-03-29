@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { ControlButton } from './ControlButton';
+import { Button } from './Button';
 import { Modal, ModalActions } from './Modal';
 
 import styles from './ConfirmDialog.module.css';
@@ -52,17 +52,17 @@ export function ConfirmDialog({
       width={400}
       footer={
         <ModalActions>
-          <ControlButton onClick={onClose} disabled={loading}>
+          <Button onClick={onClose} disabled={loading}>
             {cancelText}
-          </ControlButton>
-          <ControlButton
+          </Button>
+          <Button
             color={buttonColor}
             onClick={() => void onConfirm()}
             loading={loading}
             disabled={loading}
           >
             {resolvedConfirmText}
-          </ControlButton>
+          </Button>
         </ModalActions>
       }
     >

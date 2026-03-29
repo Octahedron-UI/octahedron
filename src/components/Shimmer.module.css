@@ -1,8 +1,8 @@
 .shimmer {
   display: inline-flex;
   align-items: center;
-  gap: var(--gs-space-1);
-  animation: pulse var(--gs-duration-shimmer) ease-in-out infinite;
+  gap: var(--octa-space-1);
+  animation: pulse var(--octa-duration-shimmer) ease-in-out infinite;
 }
 
 @keyframes pulse {

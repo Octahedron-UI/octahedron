@@ -1,13 +1,13 @@
 .root {
   display: inline-flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   cursor: pointer;
 }
 
 .disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: var(--octa-disabled-opacity);
 }
 
 .track {
@@ -18,21 +18,21 @@
   height: 20px;
   /* 10px: half of height for pill shape */
   border-radius: 10px;
-  background: var(--gs-border-hover);
-  transition: background var(--gs-hover-transition);
+  background: var(--octa-border-hover);
+  transition: background var(--octa-hover-transition);
   flex-shrink: 0;
 }
 
 .root:hover:not(.disabled) .track:not([data-checked='true']) {
-  background: var(--gs-muted);
+  background: var(--octa-muted);
 }
 
 .track[data-checked='true'] {
-  background: var(--gs-info);
+  background: var(--octa-info);
 }
 
 .track:focus-within {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: 2px;
 }
 
@@ -51,20 +51,20 @@
   position: absolute;
   /* 2px: toggle knob inset from track edge */
   left: 2px;
-  width: var(--gs-space-4);
-  height: var(--gs-space-4);
+  width: var(--octa-space-4);
+  height: var(--octa-space-4);
   border-radius: 50%;
-  background: var(--gs-bg);
-  transition: transform var(--gs-duration-fast) var(--gs-ease-default);
+  background: var(--octa-bg-app);
+  transition: transform var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .track[data-checked='true'] .thumb {
-  transform: translateX(var(--gs-space-4, 16px));
+  transform: translateX(var(--octa-space-4, 16px));
 }
 
 .label {
-  font-size: var(--gs-font-size-body);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  color: var(--octa-text);
   user-select: none;
 }
 

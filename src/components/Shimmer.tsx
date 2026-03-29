@@ -11,7 +11,7 @@ export type ShimmerProps = {
 /**
  * Inline shimmer effect for text and icon content.
  *
- * Uses a CSS mask sweep — same timing as skeleton bars (`--gs-duration-shimmer`)
+ * Uses a CSS mask sweep — same timing as skeleton bars (`--octa-duration-shimmer`)
  * but applied over existing content rather than a placeholder bar.
  * Works on both text and inline SVG icons.
  *

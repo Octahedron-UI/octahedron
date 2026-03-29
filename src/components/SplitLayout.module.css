@@ -1,0 +1,169 @@
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Panel base styles
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+.panel {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--octa-bg-app);
+}
+
+/* Flex panel - grows to fill available space */
+.panel[data-flex] {
+  flex: 1 1 auto;
+  min-width: 280px;
+  /* Performance: isolate layout from other panel changes.
+     Avoid `contain: strict` (includes `size`) — it can cause percentage-width
+     descendants (like DataTable's width: 100%) to resolve incorrectly in some
+     browsers when nested inside flex + overflow chains. */
+  contain: layout style paint;
+}
+
+/* Fixed-width panel - preferred width with natural shrinking */
+.panel[data-fixed] {
+  /* flex-shrink: 1 handles static overflow gracefully (stored width > available).
+     During drag, the Resizer pins both panels to explicit pixel sizes
+     (flex: 0 0 Npx), bypassing flex entirely for 1:1 mouse tracking. */
+  flex: 0 1 var(--panel-width);
+  min-width: 280px;
+  /* Performance: isolate layout/paint */
+  contain: layout style paint;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Closed state for fixed panels - use display:none so flexbox ignores entirely */
+.panel[data-fixed]:not([data-open]) {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Panel internal layout (for inspector-style panels)
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-bottom: 1px solid var(--octa-border);
+  gap: var(--octa-space-3);
+  flex: 0 0 auto;
+}
+
+.panelTitleGroup {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--octa-space-1);
+}
+
+.panelLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-1);
+  color: var(--octa-muted);
+}
+
+.panelLabelIcon {
+  flex-shrink: 0;
+}
+
+.panelTitle {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panelHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-1);
+}
+
+.panelBody {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Scrollable content area - for main panels with tables
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+.mainScroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainFooter {
+  flex: 0 0 auto;
+  background: var(--octa-bg-app);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Resizer handle
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+.resizer {
+  flex: 0 0 1px;
+  width: 1px;
+  background: var(--octa-border);
+  cursor: col-resize;
+  position: relative;
+  z-index: var(--octa-z-base);
+  opacity: 1;
+  /* Prevent scroll interference on touch devices */
+  touch-action: none;
+}
+
+.resizer::before {
+  /* Touch-friendly hit area (44px wide) */
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -22px;
+  right: -22px;
+}
+
+.resizer:focus-visible {
+  outline: 2px solid var(--octa-focus-ring);
+  outline-offset: -1px;
+}
+
+.resizer:not([data-visible]) {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Global styles for drag state
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+:global(body.split-layout-dragging) {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+:global(body.split-layout-dragging) * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}

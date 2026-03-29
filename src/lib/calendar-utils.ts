@@ -43,7 +43,7 @@ function getDaysInMonth(year: number, month: number): number {
 
 /**
  * Generate calendar grid for a month.
- * Returns 6 weeks × 7 days = 42 cells.
+ * Returns enough weeks to fit all days (5 or 6 rows × 7 days).
  * Each cell is either a Date object or null (for padding).
  */
 export function getCalendarGrid(year: number, month: number): (Date | null)[] {
@@ -61,10 +61,6 @@ export function getCalendarGrid(year: number, month: number): (Date | null)[] {
     grid.push(new Date(year, month, day));
   }
 
-  // Padding after last day to complete 6 weeks
-  while (grid.length < 42) {
-    grid.push(null);
-  }
 
   return grid;
 }

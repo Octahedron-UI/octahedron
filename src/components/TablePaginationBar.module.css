@@ -1,0 +1,65 @@
+.paginationBar {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--octa-space-2);
+  padding: var(--octa-space-3);
+  background: var(--octa-bg-app);
+  border-top: 1px solid var(--octa-border);
+}
+
+.paginationSelector {
+  display: flex;
+  align-items: stretch;
+  height: var(--octa-control-height);
+  background: var(--octa-bg-app);
+  border: 1px solid var(--octa-border);
+  box-sizing: border-box;
+  border-radius: var(--octa-control-radius);
+  overflow: hidden;
+}
+
+.paginationRange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--octa-space-1);
+  padding: var(--octa-space-1) var(--octa-space-2);
+  border-right: 1px solid var(--octa-border);
+  white-space: nowrap;
+}
+
+.paginationNav {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-1);
+  padding: 0 var(--octa-space-1);
+}
+
+.paginationNavButton {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: var(--octa-space-1);
+  width: calc(var(--octa-icon-size) + var(--octa-space-1));
+  height: calc(var(--octa-icon-size) + var(--octa-space-1));
+  border-radius: var(--octa-control-radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--octa-text);
+  cursor: pointer;
+}
+
+.paginationNavButton:hover:not(:disabled) {
+  background: var(--octa-hover-bg);
+}
+
+.paginationNavButton:focus-visible {
+  outline: 2px solid var(--octa-focus-ring);
+  outline-offset: -2px;
+}
+
+.paginationNavButton:disabled {
+  cursor: not-allowed;
+  color: var(--octa-muted);
+}

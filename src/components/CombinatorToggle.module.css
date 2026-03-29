@@ -2,19 +2,19 @@
   appearance: none;
   display: inline-flex;
   align-items: center;
-  height: var(--gs-control-height);
-  padding: 0 var(--gs-space-2);
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-control-radius);
-  background: var(--filter-pill-bg, var(--gs-bg));
+  height: var(--octa-control-height);
+  padding: 0 var(--octa-space-2);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  background: var(--filter-pill-bg, var(--octa-bg-app));
   color: inherit;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
   cursor: pointer;
   box-sizing: border-box;
 }
 
-:global(body.dark) .pill {
+:global([data-theme="dark"]) .pill {
   background: var(
     --filter-pill-bg-dark,
     var(--filter-pill-bg, color-mix(in srgb, white 4%, transparent))
@@ -22,14 +22,14 @@
 }
 
 .pill:hover {
-  background: var(--gs-hover-bg);
+  background: var(--octa-hover-bg);
 }
 
-.pill:focus {
+.pill:focus:not(:focus-visible) {
   outline: none;
 }
 
 .pill:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }

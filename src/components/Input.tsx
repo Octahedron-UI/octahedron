@@ -14,7 +14,7 @@ import { useUncontrolledInput } from '../lib/useInputControl';
 import { cn } from '../lib/cn';
 import styles from './Input.module.css';
 
-type InputProps = {
+export type InputProps = {
   /** Inline mode: auto-sizes to content, no border */
   filled?: boolean;
   /** Compact size for dense UIs */

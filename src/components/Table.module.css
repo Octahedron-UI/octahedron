@@ -1,0 +1,62 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--octa-font-size-body);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--octa-space-2) var(--octa-space-3);
+  border-bottom: 1px solid var(--octa-border);
+  color: var(--octa-muted);
+  font-weight: var(--octa-font-weight-medium);
+}
+
+.table td {
+  padding: var(--octa-space-2) var(--octa-space-3);
+  border-bottom: 1px solid var(--octa-border);
+  vertical-align: top;
+}
+
+.table code {
+  font-family: var(--octa-font-mono);
+  font-size: 12px;
+  background: var(--octa-surface);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* Bordered variant — card-contained grid */
+.bordered {
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.bordered th,
+.bordered td {
+  padding: var(--octa-space-2);
+  border-bottom: 1px solid var(--octa-border);
+  border-right: 1px solid var(--octa-border);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.bordered th {
+  background: var(--octa-surface);
+}
+
+.bordered td {
+  background: var(--octa-bg-app);
+}
+
+.bordered th:last-child,
+.bordered td:last-child {
+  border-right: 0;
+}
+
+.bordered tbody tr:last-child td {
+  border-bottom: 0;
+}

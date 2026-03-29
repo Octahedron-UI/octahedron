@@ -1,0 +1,55 @@
+/* NavItem - Clickable list item with chevron for navigating into detail views */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-3);
+  padding: var(--octa-space-2);
+  background: var(--octa-bg-app);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-control-radius);
+  cursor: pointer;
+  transition:
+    background var(--octa-duration-fast) var(--octa-ease-default),
+    border-color var(--octa-duration-fast) var(--octa-ease-default);
+}
+
+.item:hover {
+  background: var(--octa-surface);
+  border-color: var(--octa-border-hover);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--octa-focus-ring);
+  outline-offset: 2px;
+}
+
+.itemSelected {
+  background: var(--octa-info-bg);
+  border-color: var(--octa-info);
+}
+
+.itemSelected:hover {
+  background: var(--octa-info-bg);
+  border-color: var(--octa-info);
+}
+
+.itemSelected .chevron {
+  color: var(--octa-info);
+}
+
+.itemDisabled {
+  opacity: var(--octa-disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--octa-muted);
+}

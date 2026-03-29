@@ -6,13 +6,13 @@
 .table {
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: var(--gs-font-size-body);
+  font-size: var(--octa-font-size-body);
 }
 
 .table th,
 .table td {
-  height: var(--gs-table-row-height);
-  padding: var(--gs-space-2) var(--gs-space-3);
+  height: var(--octa-table-row-height);
+  padding: var(--octa-space-2) var(--octa-space-3);
   text-align: left;
   vertical-align: middle;
 }
@@ -21,7 +21,7 @@
 .cellContent {
   display: flex;
   align-items: center;
-  height: calc(var(--gs-table-row-height) - var(--gs-space-2) * 2);
+  height: calc(var(--octa-table-row-height) - var(--octa-space-2) * 2);
   overflow: hidden;
 }
 
@@ -40,53 +40,62 @@
 /* First/last column edge padding */
 .table th:first-child,
 .table td:first-child {
-  padding-left: var(--gs-space-4);
+  padding-left: var(--octa-space-4);
 }
 
 .table th:last-child,
 .table td:last-child {
-  padding-right: var(--gs-space-4);
+  padding-right: var(--octa-space-4);
 }
 
 /* Header styles */
 .table thead th {
-  background-color: var(--gs-surface);
-  color: var(--gs-muted);
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
+  background-color: var(--octa-surface);
+  color: var(--octa-muted);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
 }
 
 /* Row hover */
 .table tbody tr:hover {
-  background-color: var(--gs-hover-bg);
+  background-color: var(--octa-hover-bg);
 }
 
 /* Selected row */
 .table tbody tr.selected,
 .table tbody tr.selected:hover {
-  background-color: var(--gs-link-bg);
+  background-color: var(--octa-link-bg);
 }
 
 /* Bordered mode */
 .bordered th,
 .bordered td {
-  box-shadow: inset 0 -1px 0 var(--gs-border);
+  box-shadow: inset 0 -1px 0 var(--octa-border);
 }
 
 .bordered th:not(:first-child),
 .bordered td:not(:first-child) {
   box-shadow:
-    inset 0 -1px 0 var(--gs-border),
-    inset 1px 0 0 var(--gs-border);
+    inset 0 -1px 0 var(--octa-border),
+    inset 1px 0 0 var(--octa-border);
+}
+
+/* Remove bottom border on last row when pagination bar follows */
+.bordered.paginated tbody tr:last-child td {
+  box-shadow: none;
+}
+
+.bordered.paginated tbody tr:last-child td:not(:first-child) {
+  box-shadow: inset 1px 0 0 var(--octa-border);
 }
 
 /* Striped mode */
 .striped tbody tr:nth-child(even) {
-  background-color: var(--gs-surface);
+  background-color: var(--octa-surface);
 }
 
 .striped tbody tr:nth-child(even):hover {
-  background-color: var(--gs-hover-bg);
+  background-color: var(--octa-hover-bg);
 }
 
 /*
@@ -100,31 +109,31 @@
 
 /* When bordered, header needs opaque background to cover scrolling content */
 .bordered thead th {
-  background-color: var(--gs-surface);
+  background-color: var(--octa-surface);
 }
 
 /* Cells with noPadding - zero vertical padding so content fills row height,
    but keep horizontal padding for inter-column spacing */
 .table th.noPadding,
 .table td.noPadding {
-  padding: 0 var(--gs-space-3);
+  padding: 0 var(--octa-space-3);
   vertical-align: middle;
 }
 
 /* Edge padding still applies on noPadding columns — DataTable owns screen spacing */
 .table th.noPadding:first-child,
 .table td.noPadding:first-child {
-  padding-left: var(--gs-space-4);
+  padding-left: var(--octa-space-4);
 }
 
 .table th.noPadding:last-child,
 .table td.noPadding:last-child {
-  padding-right: var(--gs-space-4);
+  padding-right: var(--octa-space-4);
 }
 
 .table th.noPadding .cellContent,
 .table td.noPadding .cellContent {
-  height: var(--gs-table-row-height);
+  height: var(--octa-table-row-height);
   justify-content: center;
 }
 
@@ -143,9 +152,9 @@
   margin: 0;
   border: none;
   background: transparent;
-  color: var(--gs-muted);
+  color: var(--octa-muted);
   cursor: pointer;
-  border-radius: var(--gs-radius-sm);
+  border-radius: var(--octa-radius-sm);
   flex-shrink: 0;
   transition:
     color 0.15s ease,
@@ -153,32 +162,32 @@
 }
 
 .expandToggle:hover {
-  color: var(--gs-text);
-  background: var(--gs-hover-bg);
+  color: var(--octa-text);
+  background: var(--octa-hover-bg);
 }
 
 .expandToggle:focus-visible {
-  outline: 2px solid var(--gs-link);
+  outline: 2px solid var(--octa-link);
   outline-offset: -2px;
 }
 
 /* Child row styling */
 .childRow {
-  background-color: var(--gs-surface);
+  background-color: var(--octa-surface);
 }
 
 .childRow:hover {
-  background-color: var(--gs-hover-bg);
+  background-color: var(--octa-hover-bg);
 }
 
 /* In striped mode, child rows should be slightly different */
 .striped tbody tr.childRow:nth-child(odd),
 .striped tbody tr.childRow:nth-child(even) {
-  background-color: var(--gs-surface);
+  background-color: var(--octa-surface);
 }
 
 .striped tbody tr.childRow:hover {
-  background-color: var(--gs-hover-bg);
+  background-color: var(--octa-hover-bg);
 }
 
 /*
@@ -188,14 +197,14 @@
 .variableRowHeight th,
 .variableRowHeight td {
   height: auto;
-  min-height: var(--gs-table-row-height);
-  padding-top: var(--gs-space-2);
-  padding-bottom: var(--gs-space-2);
+  min-height: var(--octa-table-row-height);
+  padding-top: var(--octa-space-2);
+  padding-bottom: var(--octa-space-2);
 }
 
 .variableRowHeight .cellContent {
   height: auto;
-  min-height: calc(var(--gs-table-row-height) - var(--gs-space-2) * 2);
+  min-height: calc(var(--octa-table-row-height) - var(--octa-space-2) * 2);
   overflow: visible;
 }
 
@@ -231,19 +240,19 @@
   .bordered th,
   .bordered td {
     box-shadow: none;
-    border-bottom: 1px solid var(--gs-border);
+    border-bottom: 1px solid var(--octa-border);
   }
 
   .bordered th:not(:first-child),
   .bordered td:not(:first-child) {
     box-shadow: none;
-    border-bottom: 1px solid var(--gs-border);
-    border-left: 1px solid var(--gs-border);
+    border-bottom: 1px solid var(--octa-border);
+    border-left: 1px solid var(--octa-border);
   }
 
   /* Top border on first row for full grid */
   .bordered thead th {
-    border-top: 1px solid var(--gs-border);
+    border-top: 1px solid var(--octa-border);
   }
 
   .table thead th {

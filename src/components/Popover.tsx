@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import { useId, type ReactElement, type ReactNode } from 'react';
 import {
   useFloating,
   useClick,
@@ -10,6 +10,7 @@ import {
   size,
   autoUpdate,
   FloatingPortal,
+  FloatingFocusManager,
   type Placement,
 } from '@floating-ui/react';
 
@@ -25,6 +26,7 @@ type PopoverProps = {
   position?: PopoverPosition;
   /** Match the floating element's width to the trigger */
   matchWidth?: boolean;
+  'aria-label'?: string;
   children: ReactNode;
 };
 
@@ -40,8 +42,10 @@ export function Popover({
   trigger,
   position = 'bottom-left',
   matchWidth = false,
+  'aria-label': ariaLabel,
   children,
 }: PopoverProps) {
+  const popoverId = useId();
   const portalRoot = useFloatingPortalRoot();
 
   const { refs, floatingStyles, context } = useFloating({
@@ -52,17 +56,14 @@ export function Popover({
       offset(4),
       flip({ fallbackAxisSideDirection: 'end' }),
       shift({ padding: 8 }),
-      ...(matchWidth
-        ? [
-            size({
-              apply({ rects, elements }) {
-                Object.assign(elements.floating.style, {
-                  minWidth: `${rects.reference.width}px`,
-                });
-              },
-            }),
-          ]
-        : []),
+      size({
+        apply({ rects, availableHeight, elements }) {
+          Object.assign(elements.floating.style, {
+            maxHeight: `${availableHeight}px`,
+            ...(matchWidth ? { minWidth: `${rects.reference.width}px` } : {}),
+          });
+        },
+      }),
     ],
     whileElementsMounted: autoUpdate,
   });
@@ -74,19 +75,30 @@ export function Popover({
 
   return (
     <>
-      <span ref={refs.setReference} className={styles.trigger} {...getReferenceProps()}>
+      <span
+        ref={refs.setReference}
+        className={styles.trigger}
+        {...getReferenceProps()}
+        aria-expanded={open}
+        aria-controls={open ? popoverId : undefined}
+      >
         {trigger}
       </span>
       {open && (
         <FloatingPortal root={portalRoot ?? undefined}>
-          <div
-            ref={refs.setFloating}
-            className={styles.popover}
-            style={floatingStyles}
-            {...getFloatingProps()}
-          >
-            {children}
-          </div>
+          <FloatingFocusManager context={context}>
+            <div
+              ref={refs.setFloating}
+              id={popoverId}
+              role="dialog"
+              aria-label={ariaLabel}
+              className={styles.popover}
+              style={floatingStyles}
+              {...getFloatingProps()}
+            >
+              {children}
+            </div>
+          </FloatingFocusManager>
         </FloatingPortal>
       )}
     </>

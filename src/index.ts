@@ -52,26 +52,17 @@ export {
 } from './components/AppIcon';
 export type { AppIconName, AppIconProps } from './components/AppIcon';
 
-// BreadCrumbs
-export { BreadCrumbs } from './components/BreadCrumbs';
-export type { BreadCrumbItem } from './components/BreadCrumbs';
+// Breadcrumbs
+export { Breadcrumbs } from './components/Breadcrumbs';
+export type { BreadcrumbItem } from './components/Breadcrumbs';
 
 // Banner
 export { Banner } from './components/Banner';
 export type { BannerVariant, BannerIntent, BannerProps } from './components/Banner';
 
-// CalloutBox
-export { CalloutBox } from './components/CalloutBox';
-export type { CalloutBoxIntent, CalloutBoxProps } from './components/CalloutBox';
-
-// CardTable
-export { CardTable } from './components/CardTable';
-export type {
-  CardTableColumn,
-  CardTableProps,
-  CardTableCollapsibleConfig,
-  CollapsibleHeaderRenderProps,
-} from './components/CardTable';
+// Callout
+export { Callout } from './components/Callout';
+export type { CalloutProps, CalloutIntent } from './components/Callout';
 
 // Checkbox
 export { Checkbox } from './components/Checkbox';
@@ -88,41 +79,39 @@ export type { CollapsibleSectionProps } from './components/CollapsibleSection';
 
 // CombinatorToggle
 export { CombinatorToggle } from './components/CombinatorToggle';
+export type { CombinatorToggleProps } from './components/CombinatorToggle';
 
 // ConfirmDialog
 export { ConfirmDialog } from './components/ConfirmDialog';
 export type { ConfirmDialogIntent, ConfirmDialogProps } from './components/ConfirmDialog';
 
-// ControlButton
-export { ControlButton, ControlIconButton } from './components/ControlButton';
+// Button
+export { Button } from './components/Button';
 export type {
   ButtonColor,
   ButtonVariant,
-  ControlButtonProps,
-  ControlIconButtonProps,
-} from './components/ControlButton';
+  ButtonProps,
+} from './components/Button';
 
-// ControlIconLink
-export { ControlIconLink } from './components/ControlIconLink';
-export type { ControlIconLinkProps } from './components/ControlIconLink';
-
-// ControlSpinner
-export { ControlSpinner } from './components/ControlSpinner';
-export type { ControlSpinnerProps } from './components/ControlSpinner';
+// Spinner
+export { Spinner } from './components/Spinner';
+export type { SpinnerProps } from './components/Spinner';
 
 // DataTable
 export { DataTable } from './components/DataTable';
-export type { DataTableColumn, DataTablePaginationConfig } from './components/DataTable';
+export type { DataTableColumn, DataTablePaginationConfig, DataTableProps } from './components/DataTable';
 
 // DatePicker
 export { DatePicker } from './components/DatePicker';
+export type { DatePickerProps } from './components/DatePicker';
 
 // Divider
 export { Divider } from './components/Divider';
 export type { DividerProps } from './components/Divider';
 
-// DrillDownItem
-export { DrillDownItem } from './components/DrillDownItem';
+// NavItem
+export { NavItem } from './components/NavItem';
+export type { NavItemProps } from './components/NavItem';
 
 // DropZone
 export { DropZone } from './components/DropZone';
@@ -138,6 +127,15 @@ export type { FileInputProps } from './components/FileInput';
 
 // FilterPill
 export { FilterPill } from './components/FilterPill';
+export type {
+  FilterPillOption,
+  FilterPillSelect,
+  FilterPillSelectValue,
+  FilterPillTextValue,
+  FilterPillNoneValue,
+  FilterPillValue,
+  FilterPillProps,
+} from './components/FilterPill';
 
 // FloatingPortalProvider
 export { FloatingPortalProvider, useFloatingPortalRoot } from './components/FloatingPortalProvider';
@@ -152,17 +150,7 @@ export type { HorizontalScrollHintProps } from './components/HorizontalScrollHin
 
 // Input
 export { Input } from './components/Input';
-
-// KeyValueList
-export { KeyValueList } from './components/KeyValueList';
-export type { KeyValueListItem, KeyValueListProps } from './components/KeyValueList';
-
-// KeyValueTable
-export { KeyValueTable } from './components/KeyValueTable';
-export type { KeyValueTableItem, KeyValueTableProps } from './components/KeyValueTable';
-
-// Link (LinkButton)
-export { LinkButton } from './components/Link';
+export type { InputProps } from './components/Input';
 
 // Menu
 export { Menu, MenuItem, MenuDivider } from './components/Menu';
@@ -209,18 +197,11 @@ export type {
 
 // SelectionBanner
 export { SelectionBanner } from './components/SelectionBanner';
+export type { SelectionBannerProps } from './components/SelectionBanner';
 
-// Shimmer
-export { Shimmer } from './components/Shimmer';
-export type { ShimmerProps } from './components/Shimmer';
-
-// SkeletonBar
-export { SkeletonBar, Sk } from './components/SkeletonBar';
-export type { SkeletonBarProps } from './components/SkeletonBar';
-
-// SkeletonText
-export { SkeletonText } from './components/SkeletonText';
-export type { SkeletonTextProps } from './components/SkeletonText';
+// Skeleton
+export { Skeleton, Sk } from './components/Skeleton';
+export type { SkeletonProps } from './components/Skeleton';
 
 // Slider
 export { Slider } from './components/Slider';
@@ -234,9 +215,9 @@ export type { Segment, StackedBarProps } from './components/StackedBar';
 export { StepIndicator } from './components/StepIndicator';
 export type { StepStatus, Step, StepIndicatorProps } from './components/StepIndicator';
 
-// SurfaceCard
-export { SurfaceCard } from './components/SurfaceCard';
-export type { SurfaceCardProps } from './components/SurfaceCard';
+// Card
+export { Card } from './components/Card';
+export type { CardProps } from './components/Card';
 
 // TabButton
 export { TabButton } from './components/TabButton';
@@ -249,14 +230,13 @@ export type {
   TabPanelListProps,
   TabPanelTabProps,
   TabPanelContentProps,
+  TabPanelOrientation,
 } from './components/TabPanel';
 
-// TableCard
-export { TableCard } from './components/TableCard';
-export type { TableCardProps } from './components/TableCard';
+// Table
+export { Table } from './components/Table';
+export type { TableVariant, TableColumn, TableProps } from './components/Table';
 
-// TableSelectionCheckbox
-export { TableSelectionCheckbox } from './components/TableSelectionCheckbox';
 
 // Tag
 export { Tag } from './components/Tag';
@@ -268,6 +248,7 @@ export type { TextIntent, TextProps } from './components/Text';
 
 // TextArea
 export { TextArea } from './components/TextArea';
+export type { TextAreaProps } from './components/TextArea';
 
 // TextLink
 export { TextLink } from './components/TextLink';
@@ -303,6 +284,8 @@ export { defineFilterColumns } from './components/filter-schema';
 // pagination
 export { computePaginationState } from './components/pagination';
 export type { PaginationState } from './components/pagination';
+export { TablePaginationBar } from './components/TablePaginationBar';
+export type { TablePaginationBarProps } from './components/TablePaginationBar';
 
 // table-filters
 export {
@@ -330,3 +313,22 @@ export type {
 // useTablePageSelection
 export { useTablePageSelection } from './components/useTablePageSelection';
 export type { TablePageSelection } from './components/useTablePageSelection';
+
+// SplitLayout
+export { SplitContainer } from './components/SplitContainer';
+export { Panel, MainScrollArea, MainFooter } from './components/Panel';
+export { PanelHeader } from './components/PanelHeader';
+export { Resizer } from './components/Resizer';
+export { CompactDetailView } from './components/CompactDetailView';
+export type { PanelProps } from './components/Panel';
+export type { PanelHeaderProps } from './components/PanelHeader';
+
+// SplitLayout hooks
+export { useSelection } from './components/useSelection';
+export { usePanelLayout } from './components/usePanelLayout';
+export { useTypedSelection } from './components/useTypedSelection';
+export { useSplitNavigation } from './components/useSplitNavigation';
+export type { UseSelectionOptions, SelectionActions } from './components/useSelection';
+export type { UsePanelLayoutOptions, PanelLayoutActions } from './components/usePanelLayout';
+export type { TypedSelectionConfig, TypedSelection } from './components/useTypedSelection';
+export type { SplitNavigationInput, SplitNavigationResult } from './components/useSplitNavigation';

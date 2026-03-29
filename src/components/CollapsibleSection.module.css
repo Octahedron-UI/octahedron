@@ -2,31 +2,30 @@
   appearance: none;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--gs-border);
   font: inherit;
   color: inherit;
   text-align: left;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
-  padding: var(--gs-space-2) var(--gs-space-4);
+  gap: var(--octa-space-2);
+  padding: var(--octa-space-2) 0;
   cursor: pointer;
   user-select: none;
 }
 
 .header:hover {
-  background: var(--gs-hover-bg);
+  background: var(--octa-hover-bg);
 }
 
 .header:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }
 
 .chevron {
   flex-shrink: 0;
-  color: var(--gs-muted);
+  color: var(--octa-muted);
 }
 
 .chevronExpanded {
@@ -34,14 +33,13 @@
 }
 
 .title {
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-muted);
+  color: var(--octa-muted);
 }
 
 .contentWrapper {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--gs-duration-moderate) var(--gs-ease-default);
+  transition: grid-template-rows var(--octa-duration-moderate) var(--octa-ease-default);
 }
 
 .contentWrapperExpanded {

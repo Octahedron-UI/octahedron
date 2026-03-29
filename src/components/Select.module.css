@@ -7,59 +7,59 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
 }
 
-.triggerBase:focus {
+.triggerBase:focus:not(:focus-visible) {
   outline: none;
 }
 
 .triggerBase:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: 2px;
 }
 
 .disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: var(--octa-disabled-opacity);
 }
 
 /* ============================================================
    Size modifiers
    ============================================================ */
 .sizeDefault {
-  height: var(--gs-control-height);
-  line-height: var(--gs-control-height);
-  padding: 0 var(--gs-space-2);
-  gap: var(--gs-control-gap);
+  height: var(--octa-control-height);
+  line-height: var(--octa-control-height);
+  padding: 0 var(--octa-space-2);
+  gap: var(--octa-control-gap);
 }
 
 .sizeCompact {
-  height: var(--gs-control-height-compact);
-  line-height: var(--gs-control-height-compact);
-  padding: 0 var(--gs-space-1);
-  gap: var(--gs-space-1);
+  height: var(--octa-control-height-compact);
+  line-height: var(--octa-control-height-compact);
+  padding: 0 var(--octa-space-1);
+  gap: var(--octa-space-1);
 }
 
 /* ============================================================
    Default variant (bordered select)
    ============================================================ */
 .trigger {
-  border-radius: var(--gs-control-radius);
-  background: var(--gs-bg);
-  border: 1px solid var(--gs-border);
-  color: var(--gs-text);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
+  border: 1px solid var(--octa-border);
+  color: var(--octa-text);
   font: inherit;
-  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+  transition: border-color var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .trigger:hover:not(.disabled):not(:focus) {
-  border-color: var(--gs-border-hover);
+  border-color: var(--octa-border-hover);
 }
 
 .trigger:focus {
-  border-color: var(--gs-info);
+  border-color: var(--octa-info);
 }
 
 /* ============================================================
@@ -68,14 +68,14 @@
 .badgeTrigger {
   appearance: none;
   border: 1px solid transparent;
-  border-radius: var(--gs-control-radius);
-  background: var(--deterministic-color-bg, var(--gs-surface));
-  color: var(--deterministic-color-fg, var(--gs-text));
+  border-radius: var(--octa-control-radius);
+  background: var(--deterministic-color-bg, var(--octa-surface));
+  color: var(--deterministic-color-fg, var(--octa-text));
 }
 
-:global(body.dark) .badgeTrigger {
-  background: var(--deterministic-color-bg-dark, var(--deterministic-color-bg, var(--gs-surface)));
-  color: var(--deterministic-color-fg-dark, var(--deterministic-color-fg, var(--gs-text)));
+:global([data-theme="dark"]) .badgeTrigger {
+  background: var(--deterministic-color-bg-dark, var(--deterministic-color-bg, var(--octa-surface)));
+  color: var(--deterministic-color-fg-dark, var(--deterministic-color-fg, var(--octa-text)));
 }
 
 /* ============================================================
@@ -89,16 +89,16 @@
 
 .chevron,
 .chevron :global(svg) {
-  width: var(--gs-icon-size);
-  height: var(--gs-icon-size);
+  width: var(--octa-icon-size);
+  height: var(--octa-icon-size);
   flex: 0 0 auto;
 }
 
 /* Badge uses smaller chevron with subtle opacity */
 .badgeTrigger .chevron,
 .badgeTrigger .chevron :global(svg) {
-  width: var(--gs-space-3);
-  height: var(--gs-space-3);
+  width: var(--octa-space-3);
+  height: var(--octa-space-3);
   opacity: 0.7;
 }
 
@@ -131,15 +131,15 @@
 .menuWrapper {
   display: flex;
   flex-direction: column;
-  background: var(--gs-bg);
+  background: var(--octa-bg-app);
   overflow: hidden;
 }
 
 .searchContainer {
   flex-shrink: 0;
-  padding: var(--gs-space-2);
-  background: var(--gs-bg);
-  border-bottom: 1px solid var(--gs-border);
+  padding: var(--octa-space-2);
+  background: var(--octa-bg-app);
+  border-bottom: 1px solid var(--octa-border);
 }
 
 .menuContent {
@@ -148,8 +148,8 @@
 }
 
 .noResults {
-  padding: var(--gs-space-3);
-  color: var(--gs-muted);
+  padding: var(--octa-space-3);
+  color: var(--octa-muted);
   text-align: center;
 }
 
@@ -161,14 +161,14 @@
 }
 
 .group + .group {
-  border-top: 1px solid var(--gs-border);
+  border-top: 1px solid var(--octa-border);
 }
 
 .groupHeader {
-  padding: var(--gs-space-2) var(--gs-space-3);
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-muted);
+  padding: var(--octa-space-2) var(--octa-space-3);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-muted);
   user-select: none;
   pointer-events: none;
 }

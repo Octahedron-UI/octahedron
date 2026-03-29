@@ -1,0 +1,222 @@
+/* ============================================================
+ * ControlButton — Token-based variant + color system
+ *
+ * Two independent axes:
+ *   variant: solid | soft | ghost  (visual treatment)
+ *   color:   primary | success | warning | danger | accent  (color family)
+ *
+ * Colors set --btn-color / --btn-color-hover custom properties.
+ * Variants read them. Soft backgrounds are derived via color-mix().
+ * ============================================================ */
+
+/* ---- Base ---- */
+
+.control {
+  appearance: none;
+  height: var(--octa-control-height);
+  line-height: var(--octa-control-height);
+  padding: var(--octa-control-padding) calc(var(--octa-control-padding) * 2);
+  border-radius: var(--octa-control-radius);
+  background: var(--octa-bg-app);
+  border: 1px solid var(--octa-border);
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--octa-control-gap);
+  color: var(--octa-text);
+  cursor: pointer;
+  user-select: none;
+
+  /* Default color for variant classes (solid/soft/ghost) when no .color* class is applied */
+  --btn-color: var(--octa-muted);
+  --btn-color-hover: var(--octa-text);
+}
+
+.control:hover:not(:disabled) {
+  background: var(--octa-hover-bg);
+}
+
+.control:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--octa-focus-ring);
+  outline-offset: 2px;
+}
+
+.control:disabled,
+.control.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: var(--octa-muted);
+  background: var(--octa-surface);
+  border-color: var(--octa-border);
+}
+
+/* Solid variant disabled: maintain intent hint without opacity */
+.solid:disabled,
+.solid.disabled {
+  background: color-mix(in srgb, var(--btn-color) 40%, var(--octa-surface));
+  border-color: color-mix(in srgb, var(--btn-color) 40%, var(--octa-surface));
+  color: var(--octa-bg-app);
+}
+
+/* ---- Colors (set custom properties) ---- */
+
+.colorPrimary {
+  --btn-color: var(--octa-info);
+  --btn-color-hover: color-mix(in srgb, var(--octa-info) 85%, black);
+}
+.colorSuccess {
+  --btn-color: var(--octa-success);
+  --btn-color-hover: color-mix(in srgb, var(--octa-success) 85%, black);
+}
+.colorWarning {
+  --btn-color: var(--octa-warning);
+  --btn-color-hover: color-mix(in srgb, var(--octa-warning) 85%, black);
+}
+.colorDanger {
+  --btn-color: var(--octa-danger);
+  --btn-color-hover: color-mix(in srgb, var(--octa-danger) 85%, black);
+}
+.colorAccent {
+  --btn-color: var(--octa-accent);
+  --btn-color-hover: color-mix(in srgb, var(--octa-accent) 85%, black);
+}
+
+/* ---- Variants ---- */
+
+/* Solid: filled background, white text */
+.solid {
+  background: var(--btn-color);
+  border-color: var(--btn-color);
+  color: var(--octa-text-on-colored);
+}
+
+.solid:hover:not(:disabled) {
+  background: var(--btn-color-hover);
+  border-color: var(--btn-color-hover);
+}
+
+/* Soft: tinted background, colored text, subtle border */
+.soft {
+  background: color-mix(in srgb, var(--btn-color) 7%, transparent);
+  border-color: color-mix(in srgb, var(--btn-color) 25%, transparent);
+  color: var(--btn-color);
+}
+
+.soft:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--btn-color) 14%, transparent);
+  border-color: color-mix(in srgb, var(--btn-color) 40%, transparent);
+  color: var(--btn-color);
+}
+
+/* Ghost: transparent, no border */
+.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--btn-color, var(--octa-muted));
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--octa-hover-bg);
+  color: var(--btn-color, var(--octa-text));
+}
+
+:global([data-theme="dark"]) .ghost:hover:not(:disabled) {
+  background: color-mix(in srgb, white 8%, transparent);
+}
+
+/* ---- Modifiers ---- */
+
+/* Inverted: for use on colored backgrounds (white/transparent) */
+.inverted {
+  background: color-mix(in srgb, white 15%, transparent);
+  border-color: color-mix(in srgb, white 25%, transparent);
+  color: var(--octa-text-on-colored);
+}
+
+.inverted:hover:not(:disabled) {
+  background: color-mix(in srgb, white 25%, transparent);
+  border-color: color-mix(in srgb, white 35%, transparent);
+}
+
+.inverted:focus-visible {
+  outline-color: color-mix(in srgb, white 50%, transparent);
+}
+
+/* Compact: inline height for tight layouts */
+.compact {
+  height: var(--octa-control-height-compact);
+  line-height: var(--octa-control-height-compact);
+  padding: 0 var(--octa-control-padding);
+  gap: var(--octa-space-1);
+}
+
+/* Icon-only */
+.iconOnly {
+  width: var(--octa-control-height);
+  height: var(--octa-control-height);
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ---- Sub-elements ---- */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.label {
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
+  color: inherit;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* ---- Loading state ---- */
+
+.loading {
+  position: relative;
+  cursor: wait;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.spinnerOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.spinner {
+  vertical-align: middle;
+  animation: spin var(--octa-duration-spinner) linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}

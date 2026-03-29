@@ -3,29 +3,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--gs-space-6);
+  padding: var(--octa-space-6);
   text-align: center;
-  gap: var(--gs-space-3);
+  gap: var(--octa-space-3);
 }
 
 .icon {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
   opacity: 0.6;
 }
 
 .title {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-text);
 }
 
 .description {
-  font-size: var(--gs-font-size-body);
+  font-size: var(--octa-font-size-body);
   font-style: italic;
-  color: var(--gs-muted);
+  color: var(--octa-muted);
   max-width: 400px;
 }
 
 .action {
-  margin-top: var(--gs-space-2);
+  margin-top: var(--octa-space-2);
 }

@@ -10,7 +10,7 @@ import { cn } from '../lib/cn';
 import inputStyles from './input-styles.module.css';
 import styles from './TextArea.module.css';
 
-type TextAreaProps = {
+export type TextAreaProps = {
   /** Badge mode: inline style with auto-height, no border */
   badge?: boolean;
   /** Badge variant size */

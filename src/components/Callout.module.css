@@ -1,0 +1,107 @@
+.callout {
+  display: flex;
+  align-items: center;
+  gap: var(--octa-space-3);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-radius: var(--octa-control-radius);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--octa-space-4);
+  height: var(--octa-space-4);
+  flex-shrink: 0;
+}
+
+.icon :global(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-text);
+}
+
+.title + .body {
+  margin-top: var(--octa-space-1);
+}
+
+.body {
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
+  color: var(--octa-muted);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.body p {
+  margin: 0;
+}
+
+.body p + p {
+  margin-top: var(--octa-space-1);
+}
+
+.action {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Intent: none */
+.none {
+  background: var(--octa-hover-bg);
+  color: var(--octa-text);
+}
+
+.none .icon {
+  color: var(--octa-muted);
+}
+
+/* Intent: success */
+.success {
+  background: var(--octa-success-bg);
+  color: var(--octa-text);
+}
+
+.success .icon {
+  color: var(--octa-success);
+}
+
+/* Intent: warning */
+.warning {
+  background: var(--octa-warning-bg);
+  color: var(--octa-text);
+}
+
+.warning .icon {
+  color: var(--octa-warning);
+}
+
+/* Intent: danger */
+.danger {
+  background: var(--octa-danger-bg);
+  color: var(--octa-text);
+}
+
+.danger .icon {
+  color: var(--octa-danger);
+}
+
+/* Intent: info */
+.info {
+  background: var(--octa-info-bg);
+  color: var(--octa-text);
+}
+
+.info .icon {
+  color: var(--octa-info);
+}

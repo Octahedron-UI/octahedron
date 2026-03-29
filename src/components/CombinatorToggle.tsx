@@ -2,7 +2,7 @@ import { cn } from '../lib/cn';
 import type { FilterCombinator } from './table-filters';
 import styles from './CombinatorToggle.module.css';
 
-type CombinatorToggleProps = {
+export type CombinatorToggleProps = {
   value: FilterCombinator | undefined;
   onValueChange: (value: FilterCombinator) => void;
   className?: string;

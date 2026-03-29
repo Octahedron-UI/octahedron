@@ -1,17 +1,17 @@
 .avatar {
-  width: var(--gs-icon-slot-size);
-  height: var(--gs-icon-slot-size);
-  border-radius: var(--gs-control-radius);
+  width: var(--octa-icon-slot-size);
+  height: var(--octa-icon-slot-size);
+  border-radius: var(--octa-control-radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gs-text-on-colored);
+  color: var(--octa-text-on-colored);
   flex-shrink: 0;
 }
 
 .initial {
   display: block;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
   line-height: 1;
 }

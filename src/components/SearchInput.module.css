@@ -3,79 +3,79 @@
   min-width: 120px;
   display: flex;
   align-items: center;
-  gap: var(--gs-control-gap);
-  background: var(--gs-surface);
-  border-radius: var(--gs-control-radius);
-  padding: var(--gs-control-padding);
-  height: var(--gs-control-height);
+  gap: var(--octa-control-gap);
+  background: var(--octa-surface);
+  border-radius: var(--octa-control-radius);
+  padding: var(--octa-control-padding);
+  height: var(--octa-control-height);
   border: 1px solid transparent;
   box-sizing: border-box;
-  transition: border-color var(--gs-duration-fast) var(--gs-ease-default);
+  transition: border-color var(--octa-duration-fast) var(--octa-ease-default);
 }
 
 .search:hover:not(:focus-within) {
-  border-color: var(--gs-border-hover);
+  border-color: var(--octa-border-hover);
 }
 
 .search:focus-within {
-  border-color: var(--gs-info);
+  border-color: var(--octa-info);
 }
 .iconSlot {
-  width: var(--gs-icon-slot-size);
-  height: var(--gs-icon-slot-size);
-  border-radius: var(--gs-control-radius);
+  width: var(--octa-icon-slot-size);
+  height: var(--octa-icon-slot-size);
+  border-radius: var(--octa-control-radius);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
   background: transparent;
-  color: var(--gs-text);
+  color: var(--octa-text);
 }
 
 .icon,
 .icon :global(svg) {
-  width: var(--gs-icon-size);
-  height: var(--gs-icon-size);
+  width: var(--octa-icon-size);
+  height: var(--octa-icon-size);
 }
 
 .input {
   border: 0;
   outline: none;
   background: transparent;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
-  line-height: var(--gs-icon-slot-size);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
+  line-height: var(--octa-icon-slot-size);
+  color: var(--octa-text);
   flex: 1 1 auto;
   min-width: 0;
   padding: 0;
 }
 
 .input::placeholder {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
   opacity: 1;
 }
 
 .clearButton {
-  width: var(--gs-icon-slot-size);
-  height: var(--gs-icon-slot-size);
-  border-radius: var(--gs-control-radius);
+  width: var(--octa-icon-slot-size);
+  height: var(--octa-icon-slot-size);
+  border-radius: var(--octa-control-radius);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
   background: transparent;
-  color: var(--gs-muted);
+  color: var(--octa-muted);
   border: none;
   padding: 0;
   cursor: pointer;
 }
 
 .clearButton:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }
 
 .clearButton:hover {
-  color: var(--gs-text);
+  color: var(--octa-text);
 }

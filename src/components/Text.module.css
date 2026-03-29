@@ -1,34 +1,34 @@
 .title {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-text);
   margin: 0;
 }
 
 .label {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-medium);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-medium);
+  color: var(--octa-text);
   margin: 0;
 }
 
 .caption {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
-  color: var(--gs-muted);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
+  color: var(--octa-muted);
 }
 
 .body {
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
-  color: var(--gs-text);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
+  color: var(--octa-text);
   margin: 0;
 }
 
 .overline {
-  font-size: var(--gs-font-size-sm);
-  font-weight: var(--gs-font-weight-semibold);
-  color: var(--gs-muted);
+  font-size: var(--octa-font-size-sm);
+  font-weight: var(--octa-font-weight-semibold);
+  color: var(--octa-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -43,28 +43,28 @@
 /* ── Intent (semantic color) ── */
 
 .muted {
-  color: var(--gs-muted);
+  color: var(--octa-muted);
 }
 .info {
-  color: var(--gs-info);
+  color: var(--octa-info);
 }
 .success {
-  color: var(--gs-success);
+  color: var(--octa-success);
 }
 .warning {
-  color: var(--gs-warning);
+  color: var(--octa-warning);
 }
 .danger {
-  color: var(--gs-danger);
+  color: var(--octa-danger);
 }
 .accent {
-  color: var(--gs-accent);
+  color: var(--octa-accent);
 }
 
 /* ── Mono ── */
 
 .mono {
-  font-family: var(--gs-font-mono);
+  font-family: var(--octa-font-mono);
 }
 
 /* ── Italic ── */

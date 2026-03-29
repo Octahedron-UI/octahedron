@@ -10,9 +10,10 @@ export type ToggleProps = {
   label?: ReactNode;
   disabled?: boolean;
   className?: string;
+  'aria-label'?: string;
 };
 
-export function Toggle({ checked, onValueChange, label, disabled = false, className }: ToggleProps) {
+export function Toggle({ checked, onValueChange, label, disabled = false, className, 'aria-label': ariaLabel }: ToggleProps) {
   return (
     <label className={cn(styles.root, disabled && styles.disabled, className)}>
       <span className={styles.track} data-checked={checked}>
@@ -22,6 +23,7 @@ export function Toggle({ checked, onValueChange, label, disabled = false, classN
           checked={checked}
           disabled={disabled}
           onChange={(e) => onValueChange?.(e.currentTarget.checked)}
+          aria-label={label == null ? ariaLabel : undefined}
         />
         <span className={styles.thumb} />
       </span>

@@ -5,7 +5,7 @@ import { deterministicColorVars } from '../lib/deterministic-colors';
 import { X as CloseIcon } from './AppIcon';
 import styles from './Tag.module.css';
 
-export type TagVariant = 'success' | 'error' | 'warning' | 'info' | 'accent' | 'neutral';
+export type TagVariant = 'success' | 'danger' | 'warning' | 'info' | 'accent' | 'neutral';
 
 export type TagProps = {
   /** Semantic variant for status colors */

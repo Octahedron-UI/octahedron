@@ -1,13 +1,13 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--gs-space-1);
-  height: var(--gs-control-height-compact);
-  line-height: var(--gs-control-height-compact);
-  padding: 0 var(--gs-space-1);
-  border-radius: var(--gs-control-radius);
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
+  gap: var(--octa-space-1);
+  height: var(--octa-control-height-compact);
+  line-height: var(--octa-control-height-compact);
+  padding: 0 var(--octa-space-1);
+  border-radius: var(--octa-control-radius);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
   max-width: 100%;
   min-width: 0;
   text-decoration: none;
@@ -26,40 +26,38 @@ a.tag:hover {
 
 /* Monospace variant */
 .mono {
-  font-family:
-    'Source Code Pro', 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  font-family: var(--octa-font-mono);
 }
 
 /* Semantic variants */
 .success {
-  background: var(--gs-success-bg);
-  color: var(--gs-success);
+  background: var(--octa-success-bg);
+  color: var(--octa-success);
 }
 
-.error {
-  background: var(--gs-danger-bg);
-  color: var(--gs-danger);
+.danger {
+  background: var(--octa-danger-bg);
+  color: var(--octa-danger);
 }
 
 .warning {
-  background: var(--gs-warning-bg);
-  color: var(--gs-warning);
+  background: var(--octa-warning-bg);
+  color: var(--octa-warning);
 }
 
 .info {
-  background: var(--gs-info-bg);
-  color: var(--gs-info);
+  background: var(--octa-info-bg);
+  color: var(--octa-info);
 }
 
 .accent {
-  background: var(--gs-accent-bg);
-  color: var(--gs-accent);
+  background: var(--octa-accent-bg);
+  color: var(--octa-accent);
 }
 
 .neutral {
-  background: var(--gs-surface);
-  color: var(--gs-text);
+  background: var(--octa-surface);
+  color: var(--octa-text);
 }
 
 /* Deterministic color from seed */
@@ -68,7 +66,7 @@ a.tag:hover {
   color: var(--deterministic-color-fg);
 }
 
-:global(body.dark) .deterministic {
+:global([data-theme="dark"]) .deterministic {
   background: var(--deterministic-color-bg-dark);
   color: var(--deterministic-color-fg-dark);
 }
@@ -81,8 +79,8 @@ a.tag:hover {
 
 /* Link styling for mono variant */
 .mono.tag:not(.neutral) {
-  background: var(--gs-link-bg);
-  color: var(--gs-link);
+  background: var(--octa-link-bg);
+  color: var(--octa-link);
 }
 
 /* Close button */
@@ -97,23 +95,23 @@ a.tag:hover {
   justify-content: center;
   cursor: pointer;
   opacity: 0.7;
-  border-radius: var(--gs-control-radius);
+  border-radius: var(--octa-control-radius);
 }
 
 .closeButton:hover {
   opacity: 1;
 }
 
-.closeButton:focus {
+.closeButton:focus:not(:focus-visible) {
   outline: none;
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: 1px;
 }
 
 .closeButton :global(svg) {
-  width: var(--gs-space-3);
-  height: var(--gs-space-3);
+  width: var(--octa-space-3);
+  height: var(--octa-space-3);
 }

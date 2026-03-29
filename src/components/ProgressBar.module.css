@@ -2,14 +2,14 @@
   flex: 1;
   min-width: 0;
   height: var(--progress-height, 6px);
-  background: var(--gs-border);
+  background: var(--octa-border);
   border-radius: calc(var(--progress-height, 6px) / 2);
   overflow: hidden;
 }
 
 .fill {
   height: 100%;
-  background: var(--progress-color, var(--gs-info));
+  background: var(--progress-color, var(--octa-info));
   border-radius: inherit;
-  transition: width 300ms ease;
+  transition: width var(--octa-duration-slow) var(--octa-ease-default);
 }

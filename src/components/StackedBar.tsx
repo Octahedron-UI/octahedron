@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 
-import { SkeletonBar } from './SkeletonBar';
+import { Skeleton } from './Skeleton';
 import styles from './StackedBar.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -89,14 +89,14 @@ export function StackedBar({
           <div className={styles.bar} style={{ height }} />
           {label && (
             <span className={styles.label}>
-              <SkeletonBar width="40px" />
+              <Skeleton width="40px" />
             </span>
           )}
         </div>
         {showLegend && (
           <div className={styles.legend}>
-            <SkeletonBar width="80px" />
-            <SkeletonBar width="60px" />
+            <Skeleton width="80px" />
+            <Skeleton width="60px" />
           </div>
         )}
       </div>

@@ -4,27 +4,27 @@
   flex: 1 1 auto;
   min-height: 0;
   min-width: 0;
-  background: var(--gs-bg);
+  background: var(--octa-bg-app);
 }
 
 .error {
-  padding: 0 var(--gs-space-2) var(--gs-space-2);
+  padding: 0 var(--octa-space-2) var(--octa-space-2);
 }
 
 .notice {
-  padding: 0 var(--gs-space-2) var(--gs-space-2);
+  padding: 0 var(--octa-space-2) var(--octa-space-2);
 }
 
 .headerRow {
-  min-height: var(--gs-table-row-height);
-  padding: var(--gs-space-3) var(--gs-space-4);
-  border-bottom: 1px solid var(--gs-border);
+  min-height: var(--octa-table-row-height);
+  padding: var(--octa-space-3) var(--octa-space-4);
+  border-bottom: 1px solid var(--octa-border);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   flex-shrink: 0;
-  background: var(--gs-bg);
+  background: var(--octa-bg-app);
 }
 
 .headerRowMultiline {
@@ -34,21 +34,21 @@
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   min-width: 0;
 }
 
 .headerTitleStack {
   display: flex;
   flex-direction: column;
-  gap: var(--gs-space-1);
+  gap: var(--octa-space-1);
   min-width: 0;
 }
 
 .headerTitleRow {
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   min-width: 0;
 }
 
@@ -62,7 +62,7 @@
 .headerBadges {
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   flex-wrap: wrap;
   min-width: 0;
 }
@@ -70,31 +70,31 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   flex: 0 0 auto;
   margin-left: auto;
 }
 
 .tabsRow {
-  border-bottom: 1px solid var(--gs-border);
+  border-bottom: 1px solid var(--octa-border);
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
   flex-shrink: 0;
-  background: var(--gs-bg);
-  padding: var(--gs-space-2) var(--gs-space-4);
+  background: var(--octa-bg-app);
+  padding: var(--octa-space-2) var(--octa-space-4);
 }
 
 .tabsRowCutout {
   /* Cutout tabs sit flush at bottom */
   padding-bottom: 0;
   align-items: flex-start;
-  gap: var(--gs-space-3);
+  gap: var(--octa-space-3);
   border-bottom: 0;
-  box-shadow: inset 0 -1px 0 var(--gs-border);
+  box-shadow: inset 0 -1px 0 var(--octa-border);
 }
 
 .tabsRow::-webkit-scrollbar {
@@ -105,7 +105,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: var(--gs-space-2);
+  gap: var(--octa-space-2);
 }
 
 /* Tab content visibility — keeps all tabs mounted while CSS controls visibility.
@@ -127,10 +127,10 @@
 }
 
 .content {
-  padding: var(--gs-space-4);
+  padding: var(--octa-space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--gs-space-3);
+  gap: var(--octa-space-3);
   flex: 1 1 auto;
   min-height: 0;
   min-width: 0;
@@ -142,5 +142,5 @@
 }
 
 .contentLoose {
-  gap: var(--gs-space-4);
+  gap: var(--octa-space-4);
 }

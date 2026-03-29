@@ -1,20 +1,23 @@
 .pill {
+  --filter-pill-bg: var(--octa-bg-app);
+  --filter-pill-border: var(--octa-border);
+
   display: inline-flex;
   align-items: stretch;
-  height: var(--gs-control-height);
-  line-height: var(--gs-control-height);
+  height: var(--octa-control-height);
+  line-height: var(--octa-control-height);
   max-width: 100%;
   min-width: 0;
-  border: 1px solid var(--filter-pill-border, var(--gs-border));
-  border-radius: var(--gs-control-radius);
-  background: var(--filter-pill-bg, var(--gs-bg));
+  border: 1px solid var(--filter-pill-border, var(--octa-border));
+  border-radius: var(--octa-control-radius);
+  background: var(--filter-pill-bg, var(--octa-bg-app));
   overflow: hidden;
   box-sizing: border-box;
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
 }
 
-:global(body.dark) .pill {
+:global([data-theme="dark"]) .pill {
   background: var(
     --filter-pill-bg-dark,
     var(--filter-pill-bg, color-mix(in srgb, white 4%, transparent))
@@ -30,24 +33,24 @@
   text-align: left;
   cursor: pointer;
   padding: 0;
-  gap: var(--gs-space-1);
+  gap: var(--octa-space-1);
 }
 
 .segmentButton:disabled {
   cursor: default;
-  opacity: 0.7;
+  opacity: var(--octa-disabled-opacity);
 }
 
 .segmentButton:hover:not(:disabled) {
-  background: var(--gs-hover-bg);
+  background: var(--octa-hover-bg);
 }
 
-.segmentButton:focus {
+.segmentButton:focus:not(:focus-visible) {
   outline: none;
 }
 
 .segmentButton:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }
 
@@ -56,12 +59,12 @@
   align-items: center;
   height: 100%;
   min-width: 0;
-  border-right: 1px solid var(--filter-pill-border, var(--gs-border));
+  border-right: 1px solid var(--filter-pill-border, var(--octa-border));
   box-sizing: border-box;
 }
 
 .columnSegment {
-  padding: var(--gs-space-1) var(--gs-space-2);
+  padding: var(--octa-space-1) var(--octa-space-2);
   white-space: nowrap;
 }
 
@@ -73,15 +76,15 @@
 }
 
 .operatorSegment {
-  padding: 0 var(--gs-space-2);
+  padding: 0 var(--octa-space-2);
 }
 
 .valueSegment {
-  padding: 0 var(--gs-space-2);
+  padding: 0 var(--octa-space-2);
 }
 
 .valueSelectSegment {
-  padding: 0 var(--gs-space-2);
+  padding: 0 var(--octa-space-2);
 }
 
 /* Deterministic coloring — applied at all states to override default hover bg */
@@ -91,15 +94,15 @@
   color: var(--deterministic-color-fg, inherit);
 }
 
-:global(body.dark) .valueSelectSegment,
-:global(body.dark) .valueSelectSegment:hover:not(:disabled) {
+:global([data-theme="dark"]) .valueSelectSegment,
+:global([data-theme="dark"]) .valueSelectSegment:hover:not(:disabled) {
   background: var(--deterministic-color-bg-dark, var(--deterministic-color-bg, transparent));
   color: var(--deterministic-color-fg-dark, var(--deterministic-color-fg, inherit));
 }
 
 .chevronIcon {
-  width: var(--gs-space-3);
-  height: var(--gs-space-3);
+  width: var(--octa-space-3);
+  height: var(--octa-space-3);
   flex: 0 0 auto;
   opacity: 0.7;
 }
@@ -114,9 +117,9 @@
   border: 0;
   background: transparent;
   color: inherit;
-  width: var(--gs-space-5);
+  width: var(--octa-space-5);
   height: 100%;
-  padding: var(--gs-control-padding);
+  padding: var(--octa-control-padding);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -126,24 +129,24 @@
 }
 
 .removeButton:hover {
-  background: var(--gs-hover-bg);
+  background: var(--octa-hover-bg);
 }
 
-.removeButton:focus {
+.removeButton:focus:not(:focus-visible) {
   outline: none;
 }
 
 .removeButton:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }
 
 .removeIcon {
-  width: var(--gs-icon-size);
-  height: var(--gs-icon-size);
+  width: var(--octa-icon-size);
+  height: var(--octa-icon-size);
 }
 
 .removeIcon :global(svg) {
-  width: var(--gs-icon-size);
-  height: var(--gs-icon-size);
+  width: var(--octa-icon-size);
+  height: var(--octa-icon-size);
 }

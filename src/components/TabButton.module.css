@@ -3,13 +3,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--gs-space-1);
+  gap: var(--octa-space-1);
   box-sizing: border-box;
-  height: var(--gs-control-height);
-  line-height: var(--gs-control-height);
-  padding: var(--gs-space-1) var(--gs-space-2);
-  font-size: var(--gs-font-size-body);
-  font-weight: var(--gs-font-weight-regular);
+  height: var(--octa-control-height);
+  line-height: var(--octa-control-height);
+  padding: var(--octa-space-1) var(--octa-space-2);
+  font-size: var(--octa-font-size-body);
+  font-weight: var(--octa-font-weight-regular);
   cursor: pointer;
   user-select: none;
   text-decoration: none;
@@ -20,75 +20,81 @@
 }
 
 .tabButtonPill {
-  border-radius: var(--gs-space-2);
-  background: var(--gs-bg);
-  color: var(--gs-muted);
+  border-radius: var(--octa-space-2);
+  background: var(--octa-bg-app);
+  color: var(--octa-muted);
 }
 
 .tabButtonPillActive {
-  background: var(--gs-hover-bg);
-  color: var(--gs-text);
+  background: var(--octa-surface);
+  color: var(--octa-text);
 }
 
 .tabButtonPill:hover {
-  background: var(--gs-hover-bg);
-  color: var(--gs-text);
+  background: var(--octa-hover-bg);
+  color: var(--octa-text);
   text-decoration: none;
 }
 
 .tabButtonCutout {
-  border: 1px solid var(--gs-border);
-  border-radius: var(--gs-space-2) var(--gs-space-2) 0 0;
-  background: var(--gs-surface);
-  color: var(--gs-text);
+  border: 1px solid var(--octa-border);
+  border-radius: var(--octa-space-2) var(--octa-space-2) 0 0;
+  background: var(--octa-surface);
+  color: var(--octa-text);
 }
 
 .tabButtonCutout:hover {
-  background: var(--gs-hover-bg);
+  background: var(--octa-hover-bg);
 }
 
 .tabButtonCutoutActive {
   position: relative;
-  background: var(--gs-bg);
-  border-bottom: 1px solid var(--gs-bg);
-  z-index: var(--gs-z-base);
+  background: var(--octa-bg-app);
+  border-bottom: 1px solid var(--octa-bg-app);
+  z-index: var(--octa-z-base);
 }
 
 .tabButtonCutoutActive:hover {
-  background: var(--gs-bg);
+  background: var(--octa-bg-app);
 }
 
+
 .tabButton:focus-visible {
-  outline: 2px solid var(--gs-focus-ring);
+  outline: 2px solid var(--octa-focus-ring);
   outline-offset: -2px;
 }
 
 /* Dark mode: non-active cutout tabs keep bottom border visible and have distinct background */
-:global(body.dark) .tabButtonCutout {
+:global([data-theme="dark"]) .tabButtonCutout {
   background: color-mix(in srgb, white 4%, transparent);
 }
 
-:global(body.dark) .tabButtonCutout:hover {
+:global([data-theme="dark"]) .tabButtonCutout:hover {
   background: color-mix(in srgb, white 8%, transparent);
 }
 
 /* Dark mode: active cutout tab */
-:global(body.dark) .tabButtonCutoutActive {
-  background: var(--gs-bg);
-  border-bottom-color: var(--gs-bg);
+:global([data-theme="dark"]) .tabButtonCutoutActive {
+  background: var(--octa-bg-app);
+  border-bottom-color: var(--octa-bg-app);
 }
 
-:global(body.dark) .tabButtonCutoutActive:hover {
-  background: var(--gs-bg);
+:global([data-theme="dark"]) .tabButtonCutoutActive:hover {
+  background: var(--octa-bg-app);
 }
 
-:global(body.dark) .tabButtonPill {
+
+:global([data-theme="dark"]) .tabButtonPill {
   background: transparent;
   color: color-mix(in srgb, white 70%, transparent);
 }
 
-:global(body.dark) .tabButtonPillActive,
-:global(body.dark) .tabButtonPill:hover {
+:global([data-theme="dark"]) .tabButtonPillActive {
+  background: color-mix(in srgb, white 8%, transparent);
+  color: color-mix(in srgb, white 95%, transparent);
+}
+
+:global([data-theme="dark"]) .tabButtonPill:hover {
   background: color-mix(in srgb, white 12%, transparent);
   color: color-mix(in srgb, white 95%, transparent);
 }

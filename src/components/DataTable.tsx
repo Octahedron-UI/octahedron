@@ -7,13 +7,16 @@ import {
   useState,
   type CSSProperties,
   type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
   type MouseEvent as ReactMouseEvent,
 } from 'react';
 
 import { cn } from '../lib/cn';
 
 import { HorizontalScrollHint } from './HorizontalScrollHint';
-import { SkeletonBar } from './SkeletonBar';
+import { Skeleton } from './Skeleton';
+import { TablePaginationBar } from './TablePaginationBar';
+import { computePaginationState } from './pagination';
 
 import styles from './DataTable.module.css';
 
@@ -36,7 +39,7 @@ export type DataTableColumn<Row> = {
   sortValue?: (row: Row) => string | number | Date | null | undefined;
   /** Default sort order when first clicked */
   defaultSortOrder?: 'asc' | 'desc';
-  /** Custom skeleton content for loading state. If not provided, uses default SkeletonBar. */
+  /** Custom skeleton content for loading state. If not provided, uses default Skeleton. */
   skeleton?: ReactNode;
 };
 
@@ -50,7 +53,7 @@ export type DataTablePaginationConfig = {
   onPageChange?: (page: number, pageSize: number) => void;
 };
 
-type DataTableProps<Row> = {
+export type DataTableProps<Row> = {
   rows: readonly Row[];
   columns: readonly DataTableColumn<Row>[];
   rowKey?: (row: Row, rowIndex: number) => string | number;
@@ -102,7 +105,7 @@ function getColumnId<Row>(col: DataTableColumn<Row>, colIndex: number) {
   return base ? `${base}__${colIndex}` : colIndex;
 }
 
-function getSkeletonBarWidth(rowIndex: number, colIndex: number): string {
+function getSkeletonWidth(rowIndex: number, colIndex: number): string {
   const seed = (rowIndex * 7 + colIndex * 13) % 5;
   const widths = ['55%', '70%', '85%', '65%', '75%'];
   return widths[seed];
@@ -254,8 +257,18 @@ function DataTableImpl<Row>({
     return next;
   }, [columns, dataSource, sortColIndex, sortDirection]);
 
-  const effectivePageSize = pagination ? (pagination.pageSize ?? 25) : null;
-  const effectivePage = pagination ? (pagination.current ?? 1) : null;
+  // Pagination — supports both controlled (current/pageSize props) and uncontrolled (internal state)
+  const [internalPage, setInternalPage] = useState(1);
+  const [internalPageSize, setInternalPageSize] = useState(
+    pagination ? (pagination.defaultPageSize ?? pagination.pageSize ?? 25) : 25,
+  );
+
+  const effectivePageSize = pagination
+    ? (pagination.pageSize ?? internalPageSize)
+    : null;
+  const effectivePage = pagination
+    ? (pagination.current ?? internalPage)
+    : null;
   const pageCount =
     pagination && effectivePageSize != null
       ? Math.max(1, Math.ceil(sortedDataSource.length / Math.max(1, effectivePageSize)))
@@ -267,6 +280,37 @@ function DataTableImpl<Row>({
     const start = (page - 1) * effectivePageSize;
     return sortedDataSource.slice(start, start + effectivePageSize);
   }, [effectivePage, effectivePageSize, pageCount, pagination, sortedDataSource]);
+
+  // Reset to page 1 when data changes (e.g. search/filter)
+  const rowCountRef = useRef(sortedDataSource.length);
+  if (sortedDataSource.length !== rowCountRef.current) {
+    rowCountRef.current = sortedDataSource.length;
+    if (internalPage !== 1) setInternalPage(1);
+  }
+
+  const paginationState = useMemo(() => {
+    if (!pagination || effectivePageSize == null || effectivePage == null) return null;
+    return computePaginationState({
+      totalRows: sortedDataSource.length,
+      pageSize: effectivePageSize,
+      page: effectivePage,
+    });
+  }, [pagination, effectivePageSize, effectivePage, sortedDataSource.length]);
+
+  const handleSetPage = useCallback((nextPage: number) => {
+    setInternalPage(nextPage);
+    if (pagination && pagination.onPageChange) {
+      pagination.onPageChange(nextPage, effectivePageSize ?? internalPageSize);
+    }
+  }, [pagination, effectivePageSize, internalPageSize]);
+
+  const handleSetPageSize = useCallback((nextSize: number) => {
+    setInternalPageSize(nextSize);
+    setInternalPage(1);
+    if (pagination && pagination.onPageChange) {
+      pagination.onPageChange(1, nextSize);
+    }
+  }, [pagination]);
 
   // Expand paged rows to include children of expanded parents
   const expandedPagedRows = useMemo(() => {
@@ -354,7 +398,7 @@ function DataTableImpl<Row>({
       >
         {hasTitle ? <div style={{ padding: 12 }}>{title}</div> : null}
         {hasTitle ? (
-          <hr style={{ margin: 0, border: 'none', borderTop: '1px solid var(--gs-border)' }} />
+          <hr style={{ margin: 0, border: 'none', borderTop: '1px solid var(--octa-border)' }} />
         ) : null}
 
         <HorizontalScrollHint
@@ -374,6 +418,7 @@ function DataTableImpl<Row>({
               bordered && styles.bordered,
               striped && styles.striped,
               variableRowHeight && styles.variableRowHeight,
+              pagination && pagination.showControls !== false && styles.paginated,
             )}
             aria-label={ariaLabel}
             style={{
@@ -416,7 +461,7 @@ function DataTableImpl<Row>({
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: 'var(--gs-space-1)',
+                          gap: 'var(--octa-space-1)',
                           border: 0,
                           padding: 0,
                           background: 'transparent',
@@ -512,8 +557,8 @@ function DataTableImpl<Row>({
                           {col.skeleton !== undefined ? (
                             col.skeleton
                           ) : (
-                            <SkeletonBar
-                              width={getSkeletonBarWidth(rowIndex, colIndex)}
+                            <Skeleton
+                              width={getSkeletonWidth(rowIndex, colIndex)}
                               align={col.align}
                             />
                           )}
@@ -528,8 +573,8 @@ function DataTableImpl<Row>({
                     colSpan={columns.length}
                     style={{
                       textAlign: 'center',
-                      color: 'var(--gs-muted)',
-                      padding: 'var(--gs-space-6) var(--gs-space-4)',
+                      color: 'var(--octa-muted)',
+                      padding: 'var(--octa-space-6) var(--octa-space-4)',
                       fontStyle: 'italic',
                     }}
                   >
@@ -562,6 +607,8 @@ function DataTableImpl<Row>({
                       }
                       className={cn(isSelected && styles.selected, rowDepth > 0 && styles.childRow)}
                       style={isClickable ? { cursor: 'pointer' } : undefined}
+                      tabIndex={isClickable ? 0 : undefined}
+                      aria-selected={selection ? isSelected : undefined}
                       onClick={(e: ReactMouseEvent<HTMLElement>) => {
                         if (e.defaultPrevented) return;
 
@@ -579,6 +626,30 @@ function DataTableImpl<Row>({
                           selection.onSelectRow(record.__rowIndex);
                         }
                       }}
+                      onKeyDown={
+                        isClickable
+                          ? (e: ReactKeyboardEvent<HTMLElement>) => {
+                              if (e.key !== 'Enter' && e.key !== ' ') return;
+                              if (e.defaultPrevented) return;
+
+                              // Don't intercept keyboard events from interactive children
+                              if (e.target instanceof Element && e.target !== e.currentTarget) {
+                                const interactive = e.target.closest(
+                                  'a, button, input, textarea, select, [role="button"]',
+                                );
+                                if (interactive) return;
+                              }
+
+                              e.preventDefault(); // Prevent Space from scrolling
+                              if (onRowClick) {
+                                onRowClick(record.__row, record.__rowIndex);
+                              }
+                              if (selection?.onSelectRow && record.__rowIndex >= 0) {
+                                selection.onSelectRow(record.__rowIndex);
+                              }
+                            }
+                          : undefined
+                      }
                     >
                       {columns.map((col, colIndex) => {
                         const idx = record.__rowIndex;
@@ -642,7 +713,7 @@ function DataTableImpl<Row>({
                               style={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: 'var(--gs-space-1)',
+                                gap: 'var(--octa-space-1)',
                               }}
                             >
                               {showExpandToggle ? (
@@ -706,9 +777,19 @@ function DataTableImpl<Row>({
         </HorizontalScrollHint>
 
         {hasFooter ? (
-          <hr style={{ margin: 0, border: 'none', borderTop: '1px solid var(--gs-border)' }} />
+          <hr style={{ margin: 0, border: 'none', borderTop: '1px solid var(--octa-border)' }} />
         ) : null}
         {hasFooter ? <div style={{ padding: 12 }}>{footer}</div> : null}
+
+        {pagination && pagination.showControls !== false && paginationState && (
+          <TablePaginationBar
+            pagination={paginationState}
+            onSetPage={handleSetPage}
+            onSetPageSize={handleSetPageSize}
+            pageSizeOptions={pagination.pageSizeOptions}
+            showSizeChanger={pagination.showSizeChanger}
+          />
+        )}
       </div>
     </>
   );
