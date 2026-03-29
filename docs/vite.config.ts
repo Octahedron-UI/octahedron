@@ -12,6 +12,9 @@ export default defineConfig({
       'octahedron/brand.css': path.resolve(__dirname, '../src/brand.css'),
     },
   },
+  build: {
+    outDir: path.resolve(__dirname, 'dist'),
+  },
   server: {
     port: 4000,
   },
