@@ -1,7 +1,7 @@
 {
   "name": "octahedron",
   "version": "0.1.2",
-  "description": "A dark-first React component library with light/dark themes, CSS custom properties, and 70+ production-ready components.",
+  "description": "A React component library with light/dark themes, CSS custom properties, and 70+ production-ready components.",
   "type": "module",
   "exports": {
     ".": {
@@ -62,7 +62,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arciops/octahedron"
+    "url": "https://github.com/Octahedron-UI/octahedron"
   },
   "keywords": [
     "react",
