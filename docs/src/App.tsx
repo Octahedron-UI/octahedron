@@ -179,7 +179,7 @@ export function App() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', dark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     localStorage.setItem('octa-docs-theme', dark ? 'dark' : 'light');
   }, [dark]);
 
